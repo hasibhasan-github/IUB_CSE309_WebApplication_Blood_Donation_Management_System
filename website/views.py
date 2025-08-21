@@ -13,3 +13,11 @@ def home():
 @views.route('/homeg')
 def homeg():
     return render_template("BloodHeroBase.html")
+
+
+# Profile Templates Route Landlord
+
+@views.route('/Fdashboard')
+@login_required
+def Fdashboard():
+    return render_template("BloodHeroDashboard.html", user = current_user)

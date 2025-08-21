@@ -18,7 +18,7 @@ def login():
 
         if user:
             if user.password == password :
-                if user.role == "Landlord":
+                if user.role == "fighter":
                     flash("Login successful!", category="success")
                     login_user(user, remember=True)
                     return redirect(url_for('views.Lprofile'))
