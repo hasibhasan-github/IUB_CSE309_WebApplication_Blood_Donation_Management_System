@@ -3,8 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 import pymysql  # Only needed if using PyMySQL for MySQL connection
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 DB_NAME = "blood_webapp"  # Update this to your MySQL database name
 
@@ -20,6 +22,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable modification tracking
 
     db.init_app(app)
+    migrate.init_app(app, db)
 
 
     from .views import views
