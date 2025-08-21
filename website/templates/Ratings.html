@@ -23,74 +23,8 @@ Rate Donor • Blood Donation
 
 {% block section %}
 
-<div class="course-box">
-  <div class="wrapper">
-    <div class="right">
 
-      <!-- Header / Actions -->
-      <div class="info">
-        <h3>Active Request</h3>
 
-        <div class="info_data">
-          <!-- Landlord Name -->
-          <div class="data">
-            <h4>User Name</h4>
-            <strong>
-              {% if user and user.username %}
-                {{ user.username }}
-              {% else %}
-                -
-              {% endif %}
-            </strong>
-          </div>
-
-          <!-- Add Property Button -->
-          <!-- <div class="data">
-            <h4>Request an Emergency situtaion</h4>
-            <a href="" class="button-30" style="display:inline-flex; align-items:center;">
-              <strong>Emergency</strong>
-            </a>
-          </div> -->
-        </div>
-      </div>
-
-      <!-- Property List (Table) -->
-      <div class="table-box table--four" style="margin-top: 12px;">
-        <div class="table-scroll">
-          <!-- Head -->
-          <div class="table-row table-head">
-            <div class="table-cell first-cell"><p style="text-align: center;">Donor Name</p></div>
-            <div class="table-cell"><p>Blood Group</p></div>
-            <div class="table-cell"><p>Request Created</p></div>
-            <div class="table-cell last-cell"><p>Donor Email</p></div>
-            <div class="table-cell last-cell"><p>Request Status</p></div>
-          </div>
-
-          <!-- Rows -->
-          {% if stat %}
-            {% for stat in stat %}
-              <div class="table-row">
-                <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ stat.donor_name }}</b></p></div>
-                <div class="table-cell"><p><b>{{ stat.blood_group }}</b></p></div>
-                <div class="table-cell"><p><b>{{ stat.created_at }}</b></p></div>
-                <div class="table-cell last-cell"><p><b>{{ stat.donor_email }}</b></p></div>
-                <div class="table-cell last-cell"><p><b>{{ stat.status }}</b></p></div>
-                </div>
-              </div>
-            {% endfor %}
-          {% else %}
-            <div class="table-row">
-              <div class="table-cell first-cell" style="grid-column: 1 / -1; text-align:center;">
-                <p>No available Donor found yet.</p>
-              </div>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
 
