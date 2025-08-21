@@ -114,8 +114,20 @@ def signup():
                     userRole=userRole,                
                     city = city,
                     bloodgroup = bloodgroup,
-                    hospital = hospital)
+                    lastdonationdate = lastdonationdate)
                 db.session.add(new_user)
+                db.session.commit()
+                hero = Hero(
+                    email=email,        
+                    password=password,          
+                    username=username,              
+                    weight=weight, 
+                    phone=phone,         
+                    userRole=userRole,                
+                    city = city,
+                    bloodgroup = bloodgroup,
+                    lastdonationdate = lastdonationdate)
+                db.session.add(hero)
                 db.session.commit()
                 flash('Registration Successful', category='success')
                     # login_user(user, remember=True)
