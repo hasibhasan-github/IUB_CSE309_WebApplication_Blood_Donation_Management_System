@@ -47,9 +47,13 @@ Available Donor • Blood Donation
           <!-- Add Property Button -->
           <div class="data">
             <h4>Request an Emergency situtaion</h4>
-            <a href="" class="button-30" style="display:inline-flex; align-items:center;">
-              <strong>Emergency</strong>
-            </a>
+                <form method="POST" style="margin:0;">
+                    <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
+                    <button type="submit" class="button-30" 
+                            style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
+                    <strong>Emergency</strong>
+                    </button>
+                </form>
           </div>
         </div>
       </div>
