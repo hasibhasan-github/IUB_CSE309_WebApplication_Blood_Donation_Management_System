@@ -61,10 +61,10 @@ def ActiveReq():
 
 
 
-@views.route('/Fdashboard')
+@views.route('/Ratings')
 @login_required
-def Fdashboard():
-    return render_template("BloodFighterDashboard.html", user = current_user)
+def Ratings():
+    return render_template("Ratings.html", user = current_user)
 
 
 # Profile Templates Route Hero
