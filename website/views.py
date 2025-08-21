@@ -15,7 +15,16 @@ def homeg():
     return render_template("HeroBase.html")
 
 
-# Profile Templates Route Landlord
+# Profile Templates Route Fighter
+
+@views.route('/Fdashboard')
+@login_required
+def Fdashboard():
+    return render_template("BloodFighterDashboard.html", user = current_user)
+
+
+
+# Profile Templates Route Hero
 
 @views.route('/Fdashboard')
 @login_required
