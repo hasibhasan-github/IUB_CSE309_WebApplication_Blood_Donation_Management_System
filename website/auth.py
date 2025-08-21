@@ -125,8 +125,7 @@ def signup():
                     phone=phone,         
                     userRole=userRole,                
                     city = city,
-                    bloodgroup = bloodgroup,
-                    lastdonationdate = lastdonationdate)
+                    bloodgroup = bloodgroup)
                 db.session.add(hero)
                 db.session.commit()
                 flash('Registration Successful', category='success')
