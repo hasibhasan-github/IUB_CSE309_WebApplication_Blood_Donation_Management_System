@@ -49,6 +49,7 @@ def signup():
         userRole = request.form.get('role')
         phone = request.form.get('phone')
         bloodgroup = request.form.get('bloodGroup')
+        reqBloodGroup = request.form.get('reqBloodGroup')
         lastdonationdate = request.form.get('lastDonation')
         weight = request.form.get('weight')
         password = request.form.get('password')
@@ -82,7 +83,7 @@ def signup():
                 phone=phone,         
                 userRole=userRole,                
                 city = city,
-                bloodgroup = bloodgroup,
+                bloodgroup = reqBloodGroup,
                 lastdonationdate = lastdonationdate)               
                 db.session.add(new_user)
                 db.session.commit()
