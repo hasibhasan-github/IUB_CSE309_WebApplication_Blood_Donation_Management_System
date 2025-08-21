@@ -83,5 +83,5 @@ def Hprofile():
 @views.route('/Hnotify')
 @login_required
 def Hnotify():
-    bReqD = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
+    bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
     return render_template("HeroNotification.html", user = current_user, data = bReqD)
