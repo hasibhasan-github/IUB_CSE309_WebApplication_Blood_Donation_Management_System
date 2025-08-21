@@ -83,4 +83,4 @@ def Hprofile():
 @views.route('/Hnotify')
 @login_required
 def Hnotify():
-    return render_template("HeroProfile.html", user = current_user)
+    return render_template("HeroNotification.html", user = current_user)
