@@ -26,7 +26,7 @@ def Fdashboard():
 
 # Profile Templates Route Hero
 
-@views.route('/Fdashboard')
+@views.route('/Hdashboard')
 @login_required
-def Fdashboard():
-    return render_template("BloodFighterDashboard.html", user = current_user)
+def Hdashboard():
+    return render_template("HeroDashboard.html", user = current_user)
