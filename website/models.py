@@ -26,3 +26,4 @@ class Fighter(db.Model, UserMixin):
     city = db.Column(db.String(10),  nullable=False)
     bloodgroup = db.Column(db.String(3),  nullable=False)
     hospital = db.Column(db.String(15),  nullable=False)
+
