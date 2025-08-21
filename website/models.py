@@ -38,3 +38,17 @@ class Hero(db.Model, UserMixin):
     city = db.Column(db.String(10),  nullable=False)
     bloodgroup = db.Column(db.String(3),  nullable=False)
     ratings = db.Column(db.String(1), nullable=False, default="4")
+
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+db = SQLAlchemy()
+
+class BloodRequestDonate(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    requester_email = db.Column(db.String(120), db.ForeignKey("user.email"), nullable=False)
+    donor_email = db.Column(db.String(120), db.ForeignKey("user.email"), nullable=True)
+    blood_group = db.Column(db.String(5), nullable=False)   
+    city = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.String(20), default="pending")    
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
