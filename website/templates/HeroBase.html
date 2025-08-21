@@ -127,11 +127,15 @@
       </ul>
     </nav>
     <div class="overlay" aria-hidden="true"></div>
+      {% block flash %}
 
+      {% endblock %}
     <!-- Main -->
     <main class="main">
       <!-- Page header (kept simple, responsive) -->
       <!-- {% block contentDashHead %}{% endblock %} -->
+
+
 
       <!-- Promo / banner (uses theme colors) -->
       <div class="promo_card">
@@ -143,9 +147,7 @@
       <!-- Quick stat cards (responsive) -->
 
 
-      {% block flash %}
 
-      {% endblock %}
 
       {% block section %}
 

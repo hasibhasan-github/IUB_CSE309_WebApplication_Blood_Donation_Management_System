@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
-from .models import User
+from .models import User, Fighter
 
 auth = Blueprint('auth', __name__)
 
@@ -71,33 +71,10 @@ def signup():
         elif len(phone) <= 10:
             flash('contactNumber must be greater than 10 characters', category='error')
         else:
-    #         # Add User to Database
+            # Add User to Database
 
-    #         if userType == "Landlord":
-    #             new_user = Landlord(
-    #                 email=email,        # Replace with the user's email
-    #                 password=password,          # Replace with a hashed password
-    #                 username=username,              # Replace with the user's username
-    #                 gender=gender,                       # Replace with gender
-    #                 contactNumber=contactNumber,         # Replace with the user's contact number
-    #                 userType=userType)                 # Replace with the user's type (e.g., "Tenant", "Admin"
-    #             db.session.add(new_user)
-    #             db.session.commit()
-    #             new_user1 = User(
-    #                 email=email,        # Replace with the user's email
-    #                 password=password,          # Replace with a hashed password
-    #                 username=username,              # Replace with the user's username
-    #                 gender=gender,                       # Replace with gender
-    #                 contactNumber=contactNumber,         # Replace with the user's contact number
-    #                 userType=userType)                 # Replace with the user's type (e.g., "Tenant", "Admin"
-    #             db.session.add(new_user1)
-    #             db.session.commit()
-    #             flash('Registration Successful', category='success')
-    #             # login_user(user, remember=True)
-    #             return redirect(url_for('views.home'))
-    #             pass
-    #         else:
-            new_user = User(
+            if userRole == "fighter":
+                new_user = Fighter(
                 email=email,        
                 password=password,          
                 username=username,              
@@ -106,11 +83,40 @@ def signup():
                 userRole=userRole,                
                 city = city,
                 bloodgroup = bloodgroup,
-                lastdonationdate = lastdonationdate)
-            db.session.add(new_user)
-            db.session.commit()
-            flash('Registration Successful', category='success')
+                lastdonationdate = lastdonationdate)               
+                db.session.add(new_user)
+                db.session.commit()
+                new_user1 = User(
+                email=email,        
+                password=password,          
+                username=username,              
+                weight=weight, 
+                phone=phone,         
+                userRole=userRole,                
+                city = city,
+                bloodgroup = bloodgroup,
+                lastdonationdate = lastdonationdate)               
+                db.session.add(new_user1)
+                db.session.commit()
+                flash('Registration Successful', category='success')
                 # login_user(user, remember=True)
-            return redirect(url_for('views.home'))
+                return redirect(url_for('views.home'))
+                pass
+            else:
+                new_user = User(
+                    email=email,        
+                    password=password,          
+                    username=username,              
+                    weight=weight, 
+                    phone=phone,         
+                    userRole=userRole,                
+                    city = city,
+                    bloodgroup = bloodgroup,
+                    lastdonationdate = lastdonationdate)
+                db.session.add(new_user)
+                db.session.commit()
+                flash('Registration Successful', category='success')
+                    # login_user(user, remember=True)
+                return redirect(url_for('views.home'))
 
     return render_template("signup.html")
