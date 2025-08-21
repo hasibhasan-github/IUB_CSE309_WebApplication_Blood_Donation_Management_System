@@ -27,55 +27,64 @@ Profile • Blood Donation
   <div class="wrapper">
     <div class="right">
 
-      <!-- Profile Information -->
-      <div class="info">
+      <!-- Profile Information (Table) -->
+      <div class="table-box table--two">
         <h3>Profile Information</h3>
+        <div class="table-scroll">
+          <div class="table-row table-head">
+            <div class="table-cell first-cell">Field</div>
+            <div class="table-cell">Value</div>
+          </div>
 
-        <div class="info_data">
-          <div class="data">
-            <h4>Full Name</h4>
-            <p>{{ user.username }}</p>
+          <div class="table-row">
+            <div class="table-cell first-cell">Full Name</div>
+            <div class="table-cell">{{ user.username }}</div>
           </div>
-          <div class="data">
-            <h4>Email</h4>
-            <p>{{ fight.email }}</p>
-          </div>
-        </div>
 
-        <div class="info_data">
-          <div class="data">
-            <h4>Blood Group</h4>
-            <p>{{ user.bloodgroup }}</p>
+          <div class="table-row">
+            <div class="table-cell first-cell">Email</div>
+            <div class="table-cell">{{ fight.email }}</div>
           </div>
-          <div class="data">
-            <h4>User Residence</h4>
-            <p>{{ user.city }}</p>
-          </div>
-        </div>
 
-        <div class="info_data">
-          <div class="data">
-            <h4>Contact Number</h4>
-            <p>{{ user.phone }}</p>
+          <div class="table-row">
+            <div class="table-cell first-cell">Blood Group</div>
+            <div class="table-cell">{{ user.bloodgroup }}</div>
           </div>
-          <div class="data">
-            <h4>User ID</h4>
-            <p>{{ user.id }}</p>
+
+          <div class="table-row">
+            <div class="table-cell first-cell">User Residence</div>
+            <div class="table-cell">{{ user.city }}</div>
+          </div>
+
+          <div class="table-row">
+            <div class="table-cell first-cell">Contact Number</div>
+            <div class="table-cell">{{ user.phone }}</div>
+          </div>
+
+          <div class="table-row">
+            <div class="table-cell first-cell">User ID</div>
+            <div class="table-cell">{{ user.id }}</div>
           </div>
         </div>
       </div>
 
-      <!-- Profile Status -->
-      <div class="projects" style="margin-top:20px;">
+      <!-- Profile Status (Table) -->
+      <div class="table-box table--two" style="margin-top:20px;">
         <h3>Profile Status</h3>
-        <div class="projects_data">
-          <div class="data">
-            <h4>User Type</h4>
-            <p>Blood Requester <p>
+        <div class="table-scroll">
+          <div class="table-row table-head">
+            <div class="table-cell first-cell">Field</div>
+            <div class="table-cell">Value</div>
           </div>
-          <div class="data">
-            <h4>Hospital</h4>
-            <p>{{ fight.hospital }}</p>
+
+          <div class="table-row">
+            <div class="table-cell first-cell">User Type</div>
+            <div class="table-cell">Blood Requester</div>
+          </div>
+
+          <div class="table-row">
+            <div class="table-cell first-cell">Hospital</div>
+            <div class="table-cell">{{ fight.hospital }}</div>
           </div>
         </div>
       </div>
@@ -88,7 +97,6 @@ Profile • Blood Donation
     </div>
   </div>
 </div>
-
 
 
 {% endblock %}
