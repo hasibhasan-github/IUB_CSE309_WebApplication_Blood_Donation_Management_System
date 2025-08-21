@@ -50,6 +50,7 @@ def Donor():
         )
         db.session.add(newReq)
         db.session.commit()
+    useremail = request.form.get("useremail")
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 
