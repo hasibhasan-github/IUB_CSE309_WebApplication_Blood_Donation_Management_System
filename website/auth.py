@@ -8,28 +8,28 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
-    # if request.method == 'POST':
-    #     # Get form data (username and password)
-    #     email = request.form.get('email')
-    #     password = request.form.get('password')
+    if request.method == 'POST':
+        # Get form data (username and password)
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-    #     # Check if the user exists in the database
-    #     user = User.query.filter_by(email=email).first()
+        # Check if the user exists in the database
+        user = User.query.filter_by(email=email).first()
 
-    #     if user:
-    #         if user.password == password :
-    #             if user.userType == "Landlord":
-    #                 flash("Login successful!", category="success")
-    #                 login_user(user, remember=True)
-    #                 return redirect(url_for('views.Lprofile'))
-    #             else:
-    #                 flash("Login successful!", category="success")
-    #                 login_user(user, remember=True)
-    #                 return redirect(url_for('views.profile'))
-    #         else:
-    #             flash("Invalid email or password. Please try again.", category="error")
-    #     else:
-    #         flash("Email doesn't exist. Please try again.", category="error")
+        if user:
+            if user.password == password :
+                if user.role == "Landlord":
+                    flash("Login successful!", category="success")
+                    login_user(user, remember=True)
+                    return redirect(url_for('views.Lprofile'))
+                else:
+                    flash("Login successful!", category="success")
+                    login_user(user, remember=True)
+                    return redirect(url_for('views.profile'))
+            else:
+                flash("Invalid email or password. Please try again.", category="error")
+        else:
+            flash("Email doesn't exist. Please try again.", category="error")
 
     return render_template("login.html")
 
