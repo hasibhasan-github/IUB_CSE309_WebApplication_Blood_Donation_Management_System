@@ -12,7 +12,7 @@ def home():
 
 @views.route('/homeg')
 def homeg():
-    return render_template("BloodHeroBase.html")
+    return render_template("FighterBase.html")
 
 
 # Profile Templates Route Landlord
