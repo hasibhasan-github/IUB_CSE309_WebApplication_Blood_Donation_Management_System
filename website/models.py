@@ -53,3 +53,14 @@ class BloodRequestDonate(db.Model):
     hospital = db.Column(db.String(40), nullable=False)
     status = db.Column(db.String(20), default="pending")    
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Emergency(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    requester_email = db.Column(db.String(40), nullable=False)
+    requester_name = db.Column(db.String(20), nullable=False)
+    donor_email = db.Column(db.String(40), nullable=True)
+    donor_name = db.Column(db.String(40), nullable=True)
+    blood_group = db.Column(db.String(5), nullable=False)   
+    city = db.Column(db.String(20), nullable=False)
+    hospital = db.Column(db.String(40), nullable=False)   
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
