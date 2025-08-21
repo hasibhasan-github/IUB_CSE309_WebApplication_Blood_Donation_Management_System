@@ -23,11 +23,11 @@ def Fdashboard():
     return render_template("BloodFighterDashboard.html", user = current_user)
 
 
-@views.route('/Fprofile')
+@views.route('/Fprofile', methods = ['GET', 'POST'])
 @login_required
 def Fprofile():
-    fighterUser = Fighter.query.filter_by(email=email).first()
-    return render_template("FighterProfile.html", user = current_user)
+    fighterUser = Fighter.query.filter_by(user_email = current_user.email).first()
+    return render_template("FighterProfile.html", user = current_user, fight = fighterUser)
 
 
 
