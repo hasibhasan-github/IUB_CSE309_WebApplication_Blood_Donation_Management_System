@@ -44,6 +44,8 @@ Notification • Blood Donation
 
 
       <!-- Emergency Status -->
+        {% if emer %}
+            {% for data in emer %}
       <div class="projects" style="margin-top:20px;">
         <h3>Emergency Status</h3>
         <div class="projects_data">
@@ -53,7 +55,10 @@ Notification • Blood Donation
           </div>
         </div>
       </div>
+            {% endfor %}
+        {% else %}
 
+        {% endif %}
       <!-- Update Button -->
       <div class="action-row">
         <input type="button" value="Update Information" class="button-30" role="button">
