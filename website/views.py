@@ -12,7 +12,7 @@ def home():
 
 @views.route('/homeg')
 def homeg():
-    return render_template("FighterBase.html")
+    return render_template("HeroBase.html")
 
 
 # Profile Templates Route Landlord
@@ -20,4 +20,4 @@ def homeg():
 @views.route('/Fdashboard')
 @login_required
 def Fdashboard():
-    return render_template("BloodHeroDashboard.html", user = current_user)
+    return render_template("BloodFighterDashboard.html", user = current_user)
