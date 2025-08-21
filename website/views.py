@@ -23,6 +23,12 @@ def Fdashboard():
     return render_template("BloodFighterDashboard.html", user = current_user)
 
 
+@views.route('/Fprofile')
+@login_required
+def Fprofile():
+    return render_template("FighterProfile.html", user = current_user)
+
+
 
 # Profile Templates Route Hero
 
