@@ -61,24 +61,25 @@ Profile • Blood Donation
           <div class="table-row table-head">
             <div class="table-cell first-cell"><p style="text-align: center;">Donor Name</p></div>
             <div class="table-cell"><p>Blood Group</p></div>
-            <div class="table-cell"><p>Property Rent (BDT)</p></div>
+            <div class="table-cell"><p>Residential City</p></div>
             <div class="table-cell last-cell"><p>Donor Contact Number</p></div>
+            <div class="table-cell last-cell"><p>Donor Ratings</p></div>
           </div>
 
           <!-- Rows -->
-          {% if prop %}
-            {% for data in prop %}
+          {% if blood %}
+            {% for data in blood %}
               <div class="table-row">
-                <div class="table-cell first-cell"><p>{{ data.property_name }}</p></div>
-                <div class="table-cell"><p>{{ data.property_type }}</p></div>
-                <div class="table-cell"><p>{{ data.property_rent }}</p></div>
-                <div class="table-cell last-cell"><p>{{ data.property_size }}</p></div>
+                <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ data.username }}</b></p></div>
+                <div class="table-cell"><p><b>{{ data.bloodgroup }}</b></p></div>
+                <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
+                <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
               </div>
             {% endfor %}
           {% else %}
             <div class="table-row">
               <div class="table-cell first-cell" style="grid-column: 1 / -1; text-align:center;">
-                <p>No properties found yet.</p>
+                <p>No available Donor found yet.</p>
               </div>
             </div>
           {% endif %}
