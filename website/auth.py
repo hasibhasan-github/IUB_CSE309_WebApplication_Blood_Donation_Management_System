@@ -25,7 +25,7 @@ def login():
                 else:
                     flash("Login successful!", category="success")
                     login_user(user, remember=True)
-                    return redirect(url_for('views.profile'))
+                    return redirect(url_for('views.Hdashboard'))
             else:
                 flash("Invalid email or password. Please try again.", category="error")
         else:
