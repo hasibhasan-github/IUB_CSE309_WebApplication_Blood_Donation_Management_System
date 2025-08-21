@@ -49,8 +49,9 @@ def Donor():
             hospital = fighterUser.hospital
         )
         db.session.add(newReq)
-        db.session.commit() 
-    return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
+        db.session.commit()
+    bReqD = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
+    return render_template("AvailableDonor.html", user = current_user, blood = heroUser, status = bReqD)
 
 # Profile Templates Route Hero
 
