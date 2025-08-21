@@ -60,7 +60,7 @@ def Donor():
             requester_phome = current_user.phone,
             blood_group = current_user.bloodgroup,
             city = current_user.city,
-            
+            hospital = fighterUser.hospital
         )
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
