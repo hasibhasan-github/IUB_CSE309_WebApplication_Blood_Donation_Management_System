@@ -31,7 +31,7 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
     from .models import (
-        User, Fighter, Hero, BloodRequestDonate
+        User, Fighter, Hero, BloodRequestDonate, Emergency
         # Verification, LeaseAgreement, MaintenanceRequest,
         # Rent, Property, ServiceProvider, ServiceBill, Notification
     )

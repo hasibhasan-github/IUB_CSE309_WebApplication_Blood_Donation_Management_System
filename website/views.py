@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-from .models import Fighter, Hero, BloodRequestDonate
+from .models import Fighter, Hero, BloodRequestDonate, Emergency
 from . import db
 
 views = Blueprint('views', __name__)
@@ -54,7 +54,9 @@ def Donor():
     if useremail is None:
         pass
     else:
-        pass
+        newEm = Emergency(
+
+        )
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 
