@@ -62,7 +62,7 @@ Active Request • Blood Donation
             <div class="table-cell first-cell"><p style="text-align: center;">Donor Name</p></div>
             <div class="table-cell"><p>Blood Group</p></div>
             <div class="table-cell"><p>Request Created</p></div>
-            <div class="table-cell last-cell"><p>Donor Contact Number</p></div>
+            <div class="table-cell last-cell"><p>Donor Email</p></div>
             <div class="table-cell last-cell"><p>Request Status</p></div>
           </div>
 
@@ -73,7 +73,7 @@ Active Request • Blood Donation
                 <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ stat.donor_name }}</b></p></div>
                 <div class="table-cell"><p><b>{{ stat.blood_group }}</b></p></div>
                 <div class="table-cell"><p><b>{{ stat.created_at }}</b></p></div>
-                <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
+                <div class="table-cell last-cell"><p><b>{{ stat.donor_email }}</b></p></div>
                 <div class="table-cell last-cell">
                 <form method="POST" style="margin:0;">
                     <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
