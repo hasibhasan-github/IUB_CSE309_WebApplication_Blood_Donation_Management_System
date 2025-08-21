@@ -60,6 +60,13 @@ def ActiveReq():
     return render_template("ActiveRequest.html", user = current_user, stat = bReqD)
 
 
+
+@views.route('/Fdashboard')
+@login_required
+def Fdashboard():
+    return render_template("BloodFighterDashboard.html", user = current_user)
+
+
 # Profile Templates Route Hero
 
 @views.route('/Hdashboard')
