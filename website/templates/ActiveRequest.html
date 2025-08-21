@@ -67,10 +67,10 @@ Active Request • Blood Donation
           </div>
 
           <!-- Rows -->
-          {% if blood %}
-            {% for data in blood %}
+          {% if stat %}
+            {% for data in stat %}
               <div class="table-row">
-                <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ data.username }}</b></p></div>
+                <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ stat.donor_name }}</b></p></div>
                 <div class="table-cell"><p><b>{{ data.bloodgroup }}</b></p></div>
                 <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
                 <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
