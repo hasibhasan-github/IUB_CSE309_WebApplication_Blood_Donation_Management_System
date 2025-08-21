@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-# from .models import Verification, Property, LeaseAgreement
-# from . import db
+from .models import Fighter
+from . import db
 
 views = Blueprint('views', __name__)
 
@@ -26,6 +26,7 @@ def Fdashboard():
 @views.route('/Fprofile')
 @login_required
 def Fprofile():
+    fighterUser = Fighter.query.filter_by(email=email).first()
     return render_template("FighterProfile.html", user = current_user)
 
 
