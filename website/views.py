@@ -51,6 +51,10 @@ def Donor():
         db.session.add(newReq)
         db.session.commit()
     useremail = request.form.get("useremail")
+    if useremail is None:
+        pass
+    else:
+        pass
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 
