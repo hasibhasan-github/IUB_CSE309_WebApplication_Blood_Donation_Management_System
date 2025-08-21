@@ -97,7 +97,7 @@ def signup():
                 userRole=userRole,                
                 city = city,
                 bloodgroup = bloodgroup,
-                lastdonationdate = lastdonationdate)               
+                hospital = hospital)               
                 db.session.add(new_user1)
                 db.session.commit()
                 flash('Registration Successful', category='success')
@@ -114,7 +114,7 @@ def signup():
                     userRole=userRole,                
                     city = city,
                     bloodgroup = bloodgroup,
-                    lastdonationdate = lastdonationdate)
+                    hospital = hospital)
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Registration Successful', category='success')
