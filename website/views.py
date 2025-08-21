@@ -30,3 +30,9 @@ def Fdashboard():
 @login_required
 def Hdashboard():
     return render_template("HeroDashboard.html", user = current_user)
+
+
+@views.route('/Hprofile')
+@login_required
+def Hprofile():
+    return render_template("HeroProfile.html", user = current_user)
