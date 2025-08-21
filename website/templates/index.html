@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blood Donation Management System</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { padding-top: 56px; }
+    /* Ensure full image is visible without cropping */
+    .carousel-item img {
+      width: 100%;
+      height: 80vh;
+      object-fit: contain;
+      background-color: #FFF;
+    }
+    .carousel-caption { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 0.5rem; }
+    .feature-icon { font-size: 4rem; color: #dc3545; }
+    .section-title { margin: 2rem 0; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Blood Donation Management System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="homeg">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="signup">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container mt-3" id="flashArea">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% set cls = 'alert-info' %}
+          {% if category == 'success' %}{% set cls = 'alert-success' %}{% endif %}
+          {% if category == 'error' %}{% set cls = 'alert-danger' %}{% endif %}
+          {% if category == 'warning' %}{% set cls = 'alert-warning' %}{% endif %}
+          <div class="alert {{ cls }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Carousel Slider -->
+  <header>
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/static/blooddon.png" class="d-block w-100" alt="Slide 1">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Save Lives, Donate Blood</h1>
+            <p>Your small action can make a big difference.</p>
+            <a href="signup" class="btn btn-light">Become a Donor</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/join.png" class="d-block w-100" alt="Slide 2">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Join Our Community</h1>
+            <p>Together we can fight shortages.</p>
+            <a href="login" class="btn btn-light">Join Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/realtime.png" class="d-block w-100" alt="Slide 3">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Real-Time Matching</h1>
+            <p>Get matched with blood recipients instantly.</p>
+            <a href="#features" class="btn btn-light">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="container text-center py-5">
+    <h2 class="section-title">About Our System</h2>
+    <p style="text-align: justify;">
+        Our System is an intelligent, web-based Blood Donation Management Platform designed to unify and streamline
+         every step of the donation lifecycle. By combining real-time inventory tracking with a centralized donor database, 
+         our platform automatically matches eligible “Blood Heroes” to urgent “Blood Fighter” requests using blood‐group compatibility, 
+         GPS proximity, and donor availability. Donors manage their profiles, receive automated eligibility reminders, and hold digital 
+         QR-coded donor cards, while patients submit structured requests and track fulfillment status. Behind the scenes, our ML-powered 
+         demand forecasting anticipates shortages and optimizes appointment scheduling, and administrators gain full visibility through 
+         dynamic dashboards, expiry alerts, and inter-bank coordination tools. With geolocation-enabled maps of nearby centers and campaigns, 
+         intelligent notifications, and personalized donation reports, our system transforms fragmented manual processes into a predictive, 
+         responsive, and user-centric network saving more lives through faster, smarter blood management.
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center section-title">Features</h2>
+      <div class="row">
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-people-fill feature-icon mb-3"></i>
+          <h4>Smart Matching</h4>
+          <p>Automatically match donors and recipients based on blood type and location.</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-bell-fill feature-icon mb-3"></i>
+          <h4>Automated Alerts</h4>
+          <p>Receive notifications for urgent blood requests and low inventory.</p>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <i class="bi bi-bar-chart-fill feature-icon mb-3"></i>
+          <h4>Demand Forecasting</h4>
+          <p>Predict blood usage trends with ML algorithms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container text-center py-5">
+    <h2 class="section-title">Get Involved</h2>
+    <p>Contact us at <a href="mailto:info@blooddonationms.org">info@blooddonationms.org</a> to learn more or become a donor.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-danger text-white text-center py-3">
+    <p class="mb-0">&copy; 2025 Blood Donation Management System. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
