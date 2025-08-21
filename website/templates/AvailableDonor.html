@@ -4,12 +4,12 @@
 Profile • Blood Donation
 {% endblock %}
 
-{% block Profile %}
+{% block Donor %}
 
         <li>
-          <a href="Fprofile" title="Profile" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
-            <i class="fas fa-user"></i>
-            <span class="nav-item">Profile</span>
+          <a href="Donor" title="Available Donor" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-item">Available Donor</span>
           </a>
         </li>
 
@@ -43,7 +43,7 @@ Profile • Blood Donation
 
           <div class="table-row">
             <div class="table-cell first-cell">Email</div>
-            <div class="table-cell">{{ fight.email }}</div>
+            <div class="table-cell">{{ blood.email }}</div>
           </div>
 
           <div class="table-row">
@@ -84,7 +84,7 @@ Profile • Blood Donation
 
           <div class="table-row">
             <div class="table-cell first-cell">Hospital</div>
-            <div class="table-cell">{{ fight.hospital }}</div>
+            <div class="table-cell">{{ blood.hospital }}</div>
           </div>
         </div>
       </div>
