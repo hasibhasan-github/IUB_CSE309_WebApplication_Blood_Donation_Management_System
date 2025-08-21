@@ -99,4 +99,4 @@ def Hprofile():
 def Hnotify():
     bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
     emer = Emergency.query.filter_by(blood_group = current_user.bloodgroup).all()
-    return render_template("HeroNotification.html", user = current_user, data = bReqD)
+    return render_template("HeroNotification.html", user = current_user, data = bReqD, notify = emer)
