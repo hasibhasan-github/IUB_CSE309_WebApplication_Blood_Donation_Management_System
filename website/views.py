@@ -53,6 +53,13 @@ def Donor():
     bReqD = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser, status = bReqD)
 
+
+@views.route('/ActiveReq')
+@login_required
+def ActiveReq():
+    return render_template("ActiveRequest.html", user = current_user)
+
+
 # Profile Templates Route Hero
 
 @views.route('/Hdashboard')
