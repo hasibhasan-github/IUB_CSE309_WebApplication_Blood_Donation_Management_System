@@ -75,9 +75,13 @@ Profile • Blood Donation
                 <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
                 <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
                 <div class="table-cell last-cell">
-                    <a href="" class="button-30" style="display:inline-flex; align-items:center;">
-                        <strong>Request</strong>
-                    </a>
+                <form method="POST" style="margin:0;">
+                    <input type="hidden" name="userid" value="{{ data.id }}">
+                    <button type="submit" class="button-30" 
+                            style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
+                    <strong>Request</strong>
+                    </button>
+                </form>
                 </div>
               </div>
             {% endfor %}
