@@ -79,3 +79,8 @@ def Hdashboard():
 @login_required
 def Hprofile():
     return render_template("HeroProfile.html", user = current_user)
+
+@views.route('/Hnotify')
+@login_required
+def Hnotify():
+    return render_template("HeroProfile.html", user = current_user)
