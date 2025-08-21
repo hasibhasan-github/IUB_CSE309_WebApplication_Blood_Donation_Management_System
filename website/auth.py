@@ -18,7 +18,7 @@ def login():
 
         if user:
             if user.password == password :
-                if user.role == "fighter":
+                if user.userRole == "fighter":
                     flash("Login successful!", category="success")
                     login_user(user, remember=True)
                     return redirect(url_for('views.Fdashboard'))
