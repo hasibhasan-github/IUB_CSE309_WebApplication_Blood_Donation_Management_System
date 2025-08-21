@@ -36,16 +36,20 @@ def Donor():
     heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
     userid = request.form.get("userid")
     heroalert = Hero.query.filter_by(email = userid).first()
-    newReq = BloodRequestDonate(
-        requester_email = current_user.email,
-        requester_name = current_user.username,
-        donor_email = heroalert.email,
-        donor_name = heroalert.username,
-        blood_group = current_user.bloodgroup,
-        city = current_user.city,
-        hospital = fighterUser.hospital
-    )
-    
+    if heroalert is None:
+        pass
+    else:
+        newReq = BloodRequestDonate(
+            requester_email = current_user.email,
+            requester_name = current_user.username,
+            donor_email = heroalert.email,
+            donor_name = heroalert.username,
+            blood_group = current_user.bloodgroup,
+            city = current_user.city,
+            hospital = fighterUser.hospital
+        )
+        db.session.add(newReq)
+        db.session.commit() 
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 # Profile Templates Route Hero
