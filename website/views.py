@@ -62,6 +62,8 @@ def Donor():
             city = current_user.city,
             hospital = fighterUser.hospital
         )
+        db.session.add(newEm)
+        db.session.commit()
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 
