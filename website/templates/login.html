@@ -220,9 +220,9 @@
               email: document.getElementById('email').value,
               remember: document.getElementById('remember').checked,
             };
-           //  console.log('Login submit →', payload);
+            console.log('Login submit →', payload);
             // TODO: replace with real navigation after success
-            // alert('Logged in as ' + payload.role + '\n(Connect this form to your backend).');
+            alert('Logged in as ' + payload.role + '\n(Connect this form to your backend).');
           }
           form.classList.add('was-validated');
         }, false);
