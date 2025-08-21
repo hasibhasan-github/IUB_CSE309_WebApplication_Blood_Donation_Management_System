@@ -68,7 +68,7 @@ Active Request • Blood Donation
 
           <!-- Rows -->
           {% if stat %}
-            {% for data in stat %}
+            {% for stat in stat %}
               <div class="table-row">
                 <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ stat.donor_name }}</b></p></div>
                 <div class="table-cell"><p><b>{{ stat.blood_group }}</b></p></div>
