@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     lastdonationdate = db.Column(db.String(15),  nullable=False)
 
 
-class Hero(db.Model, UserMixin):
+class Fighter(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(30), unique = True,  nullable=False)
     password = db.Column(db.String(30),  nullable=False)
