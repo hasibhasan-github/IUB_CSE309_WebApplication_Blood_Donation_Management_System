@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-from .models import Fighter, Hero
+from .models import Fighter, Hero, BloodRequestDonate
 from . import db
 
 views = Blueprint('views', __name__)
@@ -35,7 +35,9 @@ def Donor():
     heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
     userid = request.form.get("userid")
     heroalert = Hero.query.filter_by(email = userid).first()
-    print(heroalert.username)
+    newReq = BloodRequestDonate(
+
+    )
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 # Profile Templates Route Hero
