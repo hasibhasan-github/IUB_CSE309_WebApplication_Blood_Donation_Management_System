@@ -44,9 +44,12 @@ from datetime import datetime
 
 class BloodRequestDonate(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    requester_email = db.Column(db.String(120), db.ForeignKey("user.email"), nullable=False)
-    donor_email = db.Column(db.String(120), db.ForeignKey("user.email"), nullable=True)
+    requester_email = db.Column(db.String(40), nullable=False)
+    requester_name = db.Column(db.String(20), nullable=False)
+    donor_email = db.Column(db.String(40), nullable=True)
+    donor_name = db.Column(db.String(40), nullable=True)
     blood_group = db.Column(db.String(5), nullable=False)   
-    city = db.Column(db.String(100), nullable=False)
+    city = db.Column(db.String(20), nullable=False)
+    hospital = db.Column(db.String(40), nullable=False)
     status = db.Column(db.String(20), default="pending")    
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
