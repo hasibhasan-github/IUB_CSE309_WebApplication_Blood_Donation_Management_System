@@ -39,10 +39,8 @@ class Hero(db.Model, UserMixin):
     bloodgroup = db.Column(db.String(3),  nullable=False)
     ratings = db.Column(db.String(1), nullable=False, default="4")
 
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-db = SQLAlchemy()
 
 class BloodRequestDonate(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
