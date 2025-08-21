@@ -76,7 +76,7 @@ def signup():
             # Add User to Database
 
             if userRole == "fighter":
-                new_user = Fighter(
+                new_user = User(
                 email=email,        
                 password=password,          
                 username=username,              
@@ -85,10 +85,10 @@ def signup():
                 userRole=userRole,                
                 city = city,
                 bloodgroup = reqBloodGroup,
-                lastdonationdate = lastdonationdate)               
+                lastdonationdate = "00-00-00")               
                 db.session.add(new_user)
                 db.session.commit()
-                new_user1 = User(
+                new_user1 = Fighter(
                 email=email,        
                 password=password,          
                 username=username,              
@@ -96,7 +96,7 @@ def signup():
                 phone=phone,         
                 userRole=userRole,                
                 city = city,
-                bloodgroup = bloodgroup,
+                bloodgroup = reqBloodGroup,
                 hospital = hospital)               
                 db.session.add(new_user1)
                 db.session.commit()
