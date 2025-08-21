@@ -34,7 +34,7 @@ Notification • Blood Donation
         <div class="info_data">
           <div class="data">
             <h4>Full Name</h4>
-            <p>{{ data.username }} has requested a blood donation appointment at the hospital, scheduled for [time]</p>
+            <p>{{ data.requester_name }} has requested a blood donation appointment at the {{ data.hospital }} on {{ data.hospital }}</p>
           </div>
             {% endfor %}
         {% else %}
