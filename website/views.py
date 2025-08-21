@@ -33,7 +33,7 @@ def Fprofile():
 @login_required
 def Donor():
     heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
-    return render_template("FighterProfile.html", user = current_user, blood = heroUser)
+    return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 
 # Profile Templates Route Hero
 
