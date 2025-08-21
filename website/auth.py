@@ -51,6 +51,7 @@ def signup():
         bloodgroup = request.form.get('bloodGroup')
         reqBloodGroup = request.form.get('reqBloodGroup')
         lastdonationdate = request.form.get('lastDonation')
+        hospital =  request.form.get('hospital')
         weight = request.form.get('weight')
         password = request.form.get('password')
         confirmPassword = request.form.get('confirm')
