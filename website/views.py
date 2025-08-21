@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-from .models import Fighter
+from .models import Fighter, Hero
 from . import db
 
 views = Blueprint('views', __name__)
@@ -29,7 +29,11 @@ def Fprofile():
     fighterUser = Fighter.query.filter_by(email = current_user.email).first()
     return render_template("FighterProfile.html", user = current_user, fight = fighterUser)
 
-
+@views.route('/Donor', methods = ['GET', 'POST'])
+@login_required
+def Donor():
+    heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
+    return render_template("FighterProfile.html", user = current_user, blood = heroUser)
 
 # Profile Templates Route Hero
 
