@@ -48,7 +48,7 @@ Profile • Blood Donation
           <div class="data">
             <h4>Request an Emergency situtaion</h4>
             <a href="" class="button-30" style="display:inline-flex; align-items:center;">
-              <strong>Request</strong>
+              <strong>Emergency</strong>
             </a>
           </div>
         </div>
@@ -63,7 +63,7 @@ Profile • Blood Donation
             <div class="table-cell"><p>Blood Group</p></div>
             <div class="table-cell"><p>Residential City</p></div>
             <div class="table-cell last-cell"><p>Donor Contact Number</p></div>
-            <div class="table-cell last-cell"><p>Donor Ratings</p></div>
+            <div class="table-cell last-cell"><p>Request Blood Donation</p></div>
           </div>
 
           <!-- Rows -->
@@ -74,7 +74,11 @@ Profile • Blood Donation
                 <div class="table-cell"><p><b>{{ data.bloodgroup }}</b></p></div>
                 <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
                 <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
-                <div class="table-cell last-cell"><p><b>{{ data.ratings }}</b></p></div>
+                <div class="table-cell last-cell">
+                    <a href="" class="button-30" style="display:inline-flex; align-items:center;">
+                        <strong>Request</strong>
+                    </a>
+                </div>
               </div>
             {% endfor %}
           {% else %}
