@@ -55,7 +55,12 @@ def Donor():
         pass
     else:
         newEm = Emergency(
-
+            requester_email = current_user.email,
+            requester_name = current_user.username,
+            requester_phome = current_user.phone,
+            blood_group = current_user.bloodgroup,
+            city = current_user.city,
+            
         )
     return render_template("AvailableDonor.html", user = current_user, blood = heroUser)
 

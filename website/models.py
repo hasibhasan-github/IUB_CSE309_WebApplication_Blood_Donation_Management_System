@@ -58,6 +58,7 @@ class Emergency(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     requester_email = db.Column(db.String(40), nullable=False)
     requester_name = db.Column(db.String(20), nullable=False)
+    requester_phome = db.Column(db.String(11),  nullable=False)
     blood_group = db.Column(db.String(5), nullable=False)   
     city = db.Column(db.String(20), nullable=False)
     hospital = db.Column(db.String(40), nullable=False)   
