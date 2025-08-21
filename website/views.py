@@ -12,7 +12,7 @@ def home():
 
 @views.route('/homeg')
 def homeg():
-    return render_template("HeroBase.html")
+    return render_template("index.html")
 
 
 # Profile Templates Route Fighter
