@@ -1,0 +1,94 @@
+{% extends 'BloodFighterBase.html' %}
+
+{% block title %}
+Profile • Blood Donation
+{% endblock %}
+
+{% block Profile %}
+
+        <li>
+          <a href="Hprofile" title="Profile" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Profile</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+      {% block flash %}
+
+      {% endblock %}
+
+
+{% block section %}
+
+<div class="course-box">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Profile Information -->
+      <div class="info">
+        <h3>Profile Information</h3>
+
+        <div class="info_data">
+          <div class="data">
+            <h4>Full Name</h4>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="data">
+            <h4>Email</h4>
+            <p>{{ user.email }}</p>
+          </div>
+        </div>
+
+        <div class="info_data">
+          <div class="data">
+            <h4>Blood Group</h4>
+            <p>{{ user.bloodgroup }}</p>
+          </div>
+          <div class="data">
+            <h4>User Residence</h4>
+            <p>{{ user.city }}</p>
+          </div>
+        </div>
+
+        <div class="info_data">
+          <div class="data">
+            <h4>Contact Number</h4>
+            <p>{{ user.phone }}</p>
+          </div>
+          <div class="data">
+            <h4>User ID</h4>
+            <p>{{ user.id }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Status -->
+      <div class="projects" style="margin-top:20px;">
+        <h3>Profile Status</h3>
+        <div class="projects_data">
+          <div class="data">
+            <h4>Last Blood Donated</h4>
+            <p>{{ user.lastdonationdate}}</p>
+          </div>
+          <div class="data">
+            <h4>Weight</h4>
+            <p>{{ user.weight }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update Button -->
+      <div class="action-row">
+        <input type="button" value="Update Information" class="button-30" role="button">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
