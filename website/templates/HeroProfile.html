@@ -24,59 +24,71 @@ Dashboard • Blood Donation
 {% block section %}
 
 <div class="course-box">
-          
   <div class="wrapper">
-  <div class="right">
-    <div class="info">
+    <div class="right">
+
+      <!-- Profile Information -->
+      <div class="info">
         <h3>Profile Information</h3>
+
         <div class="info_data">
-             <div class="data">
-                <h4>Full Name</h4>
-                <p>{{ user.username }}</p>
-             </div>
-             <div class="data">
-               <h4>Email</h4>
-                <p>{{ user.email }}</p>
+          <div class="data">
+            <h4>Full Name</h4>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="data">
+            <h4>Email</h4>
+            <p>{{ user.email }}</p>
           </div>
         </div>
+
         <div class="info_data">
-             <div class="data">
-                <h4>Gender</h4>
-                <p>Male</p>
-             </div>
-             <div class="data">
-              <h4>Subscription Type</h4>
-                <p>{{ user.userType }}</p>
+          <div class="data">
+            <h4>Gender</h4>
+            <p>Male</p>
+          </div>
+          <div class="data">
+            <h4>Subscription Type</h4>
+            <p>{{ user.userType }}</p>
           </div>
         </div>
+
         <div class="info_data">
-             <div class="data">
-                <h4>Contact Number</h4>
-                <p>{{ user.contactNumber }}</p>
-             </div>
-             <div class="data">
-              <h4>User ID</h4>
-              <p>{{ user.id }}</p>
+          <div class="data">
+            <h4>Contact Number</h4>
+            <p>{{ user.contactNumber }}</p>
+          </div>
+          <div class="data">
+            <h4>User ID</h4>
+            <p>{{ user.id }}</p>
           </div>
         </div>
-    </div>
-  
-  <div class="projects">
+      </div>
+
+      <!-- Profile Status -->
+      <div class="projects" style="margin-top:20px;">
         <h3>Profile Status</h3>
         <div class="projects_data">
-             <div class="data">
-                <h4>Information Status</h4>
-                <p>Free User</p>
-             </div>
-             <div class="data">
-               <h4>Rating</h4>
-                <p>{{ LastOrder }}</p>
+          <div class="data">
+            <h4>Information Status</h4>
+            <p>Free User</p>
+          </div>
+          <div class="data">
+            <h4>Rating</h4>
+            <p>{{ LastOrder }}</p>
           </div>
         </div>
+      </div>
+
+      <!-- Update Button -->
+      <div class="action-row">
+        <input type="button" value="Update Information" class="button-30" role="button">
+      </div>
+
     </div>
-  </div>           
+  </div>
 </div>
-<input type="update" value="Update Information" class="button-30" role="button" readonly>
-</div>
+
+
 
 {% endblock %}
