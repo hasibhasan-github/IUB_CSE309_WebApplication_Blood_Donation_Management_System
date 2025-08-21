@@ -26,7 +26,7 @@ def Fdashboard():
 @views.route('/Fprofile', methods = ['GET', 'POST'])
 @login_required
 def Fprofile():
-    fighterUser = Fighter.query.filter_by(user_email = current_user.email).first()
+    fighterUser = Fighter.query.filter_by(email = current_user.email).first()
     return render_template("FighterProfile.html", user = current_user, fight = fighterUser)
 
 
