@@ -46,9 +46,8 @@ Rate Donor • Blood Donation
                   ) has kindly donated blood to you.
                   Please take a moment to rate and appreciate his generosity. ❤️💉
                 </p>
-
                 <!-- Corner action -->
-                 
+                {% if rate %}
                     {% for rep in rate %}
                       {% if rep.donor_email == d.donor_email %}
                         {% if rep.ratingstatus == 'rated' %}
@@ -65,6 +64,15 @@ Rate Donor • Blood Donation
                         </div>
                       {% endif %}
                     {% endfor %}
+                {% else %}
+                        <div class="notif-actions">
+                          <!-- Use GET to navigate to rating page with donor_id -->
+                          <form method="POST">
+                            <input type="hidden" name="donor_email" id="donor_email" value="{{ d.donor_email }}">
+                            <button type="submit" class="button-30 is-success">Rate</button>
+                          </form>
+                        </div>
+                 {% endif %}
               </div>
             </div>
             {% endif %}
