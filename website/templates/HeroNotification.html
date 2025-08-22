@@ -1,0 +1,73 @@
+{% extends 'HeroBase.html' %}
+
+{% block title %}
+Notification • Blood Donation
+{% endblock %}
+
+{% block Notification %}
+
+        <li>
+          <a href="Hnotify" title="Notification" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-info-circle"></i>
+            <span class="nav-item">Notification</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+      {% block flash %}
+      {% endblock %}
+
+
+{% block section %}
+
+<div class="course-box">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Profile Information -->
+      <div class="info">
+        <h3>Notifications</h3>
+        {% if data %}
+            {% for data in data %}
+        <div class="info_data">
+          <div class="data">
+            <h4>Full Name</h4>
+            <p>{{ data.requester_name }} has requested a blood donation appointment at the {{ data.hospital }} hospital in {{ data.city }}, on {{ data.created_at }}. 
+                Current Status of the request is {{ data.status}}.</p>
+          </div>
+            {% endfor %}
+        {% else %}
+
+        {% endif %}
+
+
+      <!-- Emergency Status -->
+        {% if notify %}
+            {% for data in notify %}
+      <div class="projects" style="margin-top:20px;">
+        <h3>Emergency Status</h3>
+        <div class="projects_data">
+          <div class="data">
+            <h4>Last Blood Donated</h4>
+            <p>🚨 Urgent! {{ data.requester_name }} is in 
+                immediate need of a blood donation at 
+                the {{ data.hospital }} hospital right now in 
+                {{ data.city }}. Blood Fighter contact number
+                {{ data.requester_phome }}. The request was created 
+                at {{ data.created_at }}.</p>
+          </div>
+        </div>
+      </div>
+            {% endfor %}
+        {% else %}
+
+        {% endif %}
+      <!-- Update Button -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> {% block title %}
+
+  {% endblock %}
+  </title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <!-- Base styles -->
+  <link rel="stylesheet" href= "{{ url_for('static', filename='css/base.css') }}" >
+    <link rel="icon" type="image/png" href="/static/red-icon.png" />
+</head>
+<!-- 
+  THEMES:
+  - Add class 'theme-hero' for Blood Hero look
+  - Add class 'theme-fighter' for Blood Fighter look
+-->
+<body class="theme-hero">
+  <div class="layout">
+    <!-- Mobile & Desktop topbar -->
+    <header class="topbar">
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="true">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="brand">
+        <img src="/static/red-icon.png" alt="Avatar" class="brand-avatar">
+        <div class="brand-text">
+          <strong>Blood Fighter</strong>
+          <small>Dashboard</small>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <!-- Optional: quick theme toggle for demo -->
+        <button class="theme-btn" data-theme="hero" title="Blood Hero theme">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="theme-btn" data-theme="fighter" title="Blood Fighter theme">
+          <i class="fas fa-hand-rock"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" aria-label="Sidebar">
+      <ul>
+        <li>
+          <a href="Fdashboard" class="logo" title="Blood Fighter">
+            <img src="/static/red-icon.png" alt="">
+            <span class="nav-item">Blood Fighter</span>
+          </a>
+        </li>
+
+        
+
+        {% block Dashboard %}
+
+        <li>
+          <a href="Fdashboard" title="Dashboard">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Dashboard</span>
+          </a>
+        </li>
+
+        {% endblock %}
+
+        {% block Profile %}
+
+        <li>
+          <a href="Fprofile" title="Profile">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Profile</span>
+          </a>
+        </li>
+
+        {% endblock %}
+        {% block Information %}
+
+        {% endblock %}
+        {% block Donor %}
+
+        <li>
+          <a href="Donor" title="Available Donor">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-item">Available Donor</span>
+          </a>
+        </li>
+
+        {% endblock %}
+        {% block Active %}
+
+        <li>
+          <a href="ActiveReq" title="Active Request">
+            <i class="fas fa-wallet"></i>
+            <span class="nav-item">Active Request</span>
+          </a>
+        </li>
+
+        {% endblock %}
+
+        {% block Ratings %}
+
+        <li>
+          <a href="Ratings" title="Rate Donors">
+            <i class="fas fa-star"></i>
+            <span class="nav-item">Rate Donors</span>
+          </a>
+        </li>
+
+        {% endblock %}
+
+        {% block Prediction %}
+
+        <li>
+          <a href="" title="Prediction">
+            <i class="fas fa-question-circle"></i>
+            <span class="nav-item">Prediction</span>
+          </a>
+        </li>
+
+        {% endblock %}
+
+        <li class="mt-auto">
+          <a href="logout" class="logout" title="Log out">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="overlay" aria-hidden="true"></div>
+
+          {% block flash %}
+
+      {% endblock %}
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Page header (kept simple, responsive) -->
+      <!-- {% block contentDashHead %}{% endblock %} -->
+
+      <!-- Promo / banner (uses theme colors) -->
+      <div class="promo_card">
+        <h1>Welcome back!</h1>
+        <span>Keep saving lives with real-time updates.</span>
+        <button class="button-30" onclick="window.location.href='ActiveReq'">View Alerts</button>
+      </div>
+
+      <!-- Quick stat cards (responsive) --> 
+
+
+
+      {% block section %}
+
+
+
+      {% endblock %}
+
+      <!-- Work area: a flexible, responsive section for MANY codes/components -->
+      <!-- {% block contentButton %}{% endblock %} -->
+      <!-- {% block contentDash %}{% endblock %} -->
+
+<!-- Sections Commented -->
+
+      <!-- <section class="work-section" aria-label="Work area where you'll place many codes">
+        <div class="work-grid">
+          <div class="work-card">
+            <h3>Section A</h3>
+            <p>Drop any component/table/chart here.</p>
+          </div>
+          <div class="work-card">
+            <h3>Section B</h3>
+            <p>This grid auto-wraps and stays readable on mobile.</p>
+          </div>
+          <div class="work-card">
+            <h3>Section C</h3>
+            <p>Use as many items as you need—no overflow issues.</p>
+          </div>
+          <div class="work-card">
+            <h3>Section D</h3>
+            <p>Cards grow/shrink with available space.</p>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Courses demo (kept for parity, made responsive) -->
+      <!-- <section class="main-course">
+        <div class="course-box">
+          <ul class="course-tabs">
+            <li class="active">In progress</li>
+            <li>Explore</li>
+            <li>Incoming</li>
+            <li>Finished</li>
+          </ul>
+          <div class="course">
+            <div class="box">
+              <h3>HTML</h3>
+              <p>80% - progress</p>
+              <button>continue</button>
+              <i class="fab fa-html5 html"></i>
+            </div>
+            <div class="box">
+              <h3>CSS</h3>
+              <p>50% - progress</p>
+              <button>continue</button>
+              <i class="fab fa-css3-alt css"></i>
+            </div>
+            <div class="box">
+              <h3>JavaScript</h3>
+              <p>30% - progress</p>
+              <button>continue</button>
+              <i class="fab fa-js-square js"></i>
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+  </div>
+
+  <script>
+    const body = document.body;
+    const menuBtn = document.querySelector('.menu-toggle');
+    const overlay = document.querySelector('.overlay');
+    const mql = window.matchMedia('(min-width: 992px)');
+
+    function setAria() {
+      const expanded = mql.matches ? !body.classList.contains('nav-collapsed') : body.classList.contains('show-nav');
+      menuBtn?.setAttribute('aria-expanded', expanded);
+    }
+
+    function toggleSidebar() {
+      if (mql.matches) {
+        body.classList.toggle('nav-collapsed'); // desktop collapse
+      } else {
+        body.classList.toggle('show-nav'); // mobile slide-in
+      }
+      setAria();
+    }
+
+    menuBtn?.addEventListener('click', toggleSidebar);
+    overlay?.addEventListener('click', () => { body.classList.remove('show-nav'); setAria(); });
+
+    // Keep classes sane on breakpoint changes
+    function handleBreakpointChange(e){
+      if (e.matches){
+        // entering desktop: close mobile drawer state
+        body.classList.remove('show-nav');
+      } else {
+        // entering mobile: expand desktop if previously collapsed
+        body.classList.remove('nav-collapsed');
+      }
+      setAria();
+    }
+    if (mql.addEventListener) mql.addEventListener('change', handleBreakpointChange);
+    else if (mql.addListener) mql.addListener(handleBreakpointChange); // older browsers
+
+    // Theme toggle demo (optional). Use 'theme-hero' or 'theme-fighter' on <body>
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-theme');
+        body.classList.remove('theme-hero', 'theme-fighter');
+        body.classList.add(mode === 'fighter' ? 'theme-fighter' : 'theme-hero');
+      });
+    });
+
+    setAria();
+  </script>
+</body>
+</html>

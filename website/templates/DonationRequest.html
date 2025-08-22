@@ -1,0 +1,87 @@
+{% extends 'HeroBase.html' %}
+
+{% block title %}
+Donation Request • Blood Donation
+{% endblock %}
+
+{% block DonationR %}
+
+        <li>
+          <a href="DonationR" title="Donation Request" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-item">Donation Request</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+      {% block flash %}
+
+      {% endblock %}
+
+
+{% block section %}
+
+<div class="course-box">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Notifications -->
+      <div class="info notif">
+        <h3>Donation Requests</h3>
+
+        {% if data %}
+          {% for row in data %}
+          <div class="info_data">
+            <div class="data">
+              <h4>Full Name</h4>
+              <p>
+                {{ row.requester_name }} has requested a blood donation appointment
+                at the {{ row.hospital }} hospital in {{ row.city }}, on {{ row.created_at }}.
+                Current status of the request is {{ row.status }}.
+              </p>
+
+              <!-- Corner actions -->
+              <div class="notif-actions">
+                <!-- Use POST if your route requires it + add CSRF as needed -->
+                 {% if row.status == 'pending' %}
+                <form method="POST">
+                    <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-success">Accept</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-danger">Reject</button>
+                </form>
+                {% else %}
+                <!-- <form method="POST">
+                    <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-success" disabled>Unavailable</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-danger" disabled >Unavailable</button>
+                </form> -->
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="info_data">
+            <div class="data">
+              <p>No notifications right now.</p>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+      <!-- /Notifications -->
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

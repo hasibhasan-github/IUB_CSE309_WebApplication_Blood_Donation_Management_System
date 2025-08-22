@@ -1,0 +1,71 @@
+{% extends 'HeroBase.html' %}
+
+{% block title %}
+Dashboard • Blood Donation
+{% endblock %}
+
+{% block Dashboard %}
+
+        <li>
+          <a href="" title="Dashboard" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Dashboard</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+{% block flash %}
+  <div class="container mt-3" id="flashArea">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% set cls = 'alert-info' %}
+          {% if category == 'success' %}{% set cls = 'alert-success' %}{% endif %}
+          {% if category == 'error' %}{% set cls = 'alert-danger' %}{% endif %}
+          {% if category == 'warning' %}{% set cls = 'alert-warning' %}{% endif %}
+          <div class="alert {{ cls }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+{% endblock %}
+
+
+{% block section %}
+
+
+      <section class="main-skills">
+        <div class="card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Donation Requests</h3>
+          <p>Track requests needing immediate attention.</p>
+          <button onclick="window.location.href='DonationR'">Open</button>
+        </div>
+        <div class="card">
+          <i class="fab fa-wordpress"></i>
+          <h3>Donor Matches</h3>
+          <p>New matches found in your area.</p>
+          <button onclick="window.location.href='Hnotify'">Open</button>
+        </div>
+        </section>
+        <section class="main-skills">
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Total Users</h3>
+          <h2>{{ total_users }}</h2>
+          <p><strong>Representing our growing network dedicated to saving lives.</strong></p>
+        </div>
+        <div class="card">
+          <i class="fas fa-user-friends"></i>
+          <h3>Total Donors</h3>
+          <h2>{{ total_hero_users }}</h2>
+          <p><strong>Reflecting the dedicated individuals committed to saving lives through their generosity.</strong></p>
+        </div>
+      </section>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends 'HeroBase.html' %}
+
+{% block title %}
+Digital Donor Card • Blood Donation
+{% endblock %}
+
+{% block Card %}
+        <li>
+          <a href="Dcard" title="Digital Donor Card" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-wallet"></i>
+            <span class="nav-item">Digital Donor Card</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+
+
+{% block section %}
+
+<style>
+  /* Centered logo above the card */
+  .card-logo-wrap{
+    display:flex; justify-content:center; align-items:center;
+    margin: 6px 0 14px;
+  }
+  .card-logo{
+    max-width: 160rem; height:auto;
+    display:block;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,.12));
+  }
+
+  /* Digital Donor Card */
+  .digital-donor-card{ padding:0; overflow:hidden; }
+  .digital-donor-card .stripe{
+    background: var(--accent-grad); color:#fff;
+    padding:14px 16px; display:flex; align-items:center;
+    justify-content:space-between; gap:12px;
+  }
+  .digital-donor-card .identity{ display:flex; align-items:center; gap:12px; }
+  .digital-donor-card .logo-mark{
+    width:48px; height:48px; object-fit:contain; border-radius:12px;
+    background: rgba(255,255,255,.22); padding:6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15) inset, 0 1px 2px rgba(0,0,0,.06);
+    border: 1px solid rgba(255,255,255,.35);
+  }
+  .digital-donor-card .title{ display:flex; flex-direction:column; line-height:1.1; }
+  .digital-donor-card .title b{ font-size:1.05rem; }
+  .digital-donor-card .chip{
+    display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+    padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.18);
+    color:#fff; font-size:.85rem; border:1px solid rgba(255,255,255,.35);
+  }
+  .digital-donor-card .blood-badge{
+    background:#fff; color:#b91c1c; font-weight:800; border-radius:12px;
+    padding:6px 10px; font-size:.95rem;
+  }
+  .digital-donor-card .body{
+    padding:16px; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px;
+  }
+  .digital-donor-card .field{
+    background:#f9fafb; border:1px solid #eef0f3; border-radius:12px; padding:12px;
+  }
+  .digital-donor-card .field h4{ margin:0 0 6px; font-size:.82rem; color:var(--muted); font-weight:600; }
+  .digital-donor-card .field p{ margin:0; font-size:.98rem; color:var(--text); word-break:break-word; }
+  .digital-donor-card .footer{
+    padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+    border-top:1px solid #eef0f3; background:#fff;
+  }
+  .digital-donor-card .stars{ display:flex; align-items:center; gap:6px; color:#f59e0b; }
+  .digital-donor-card .stars .muted{ color:#d1d5db; }
+  .digital-donor-card small{ color:var(--muted); }
+  @media (max-width:575.98px){ .digital-donor-card .body{ grid-template-columns:1fr; } }
+</style>
+
+<section class="main-skills">
+  <!-- Centered brand/logo BEFORE the card -->
+  <div class="card-logo-wrap">
+    <img
+      class="card-logo"
+      src="{{ url_for('static', filename='blood-hero.png') }}"
+      alt="Blood Hero logo"
+    >
+    {# If your file name has a space: filename='img/Blood Hero.png' #}
+  </div>
+
+  <div class="card digital-donor-card">
+    <!-- Top stripe with small logo inside the card as well (optional, keep or remove) -->
+    <div class="stripe">
+      <div class="identity">
+        <img
+          class="logo-mark"
+          src="{{ url_for('static', filename='blood-hero.png') }}"
+          alt="Donor logo"
+        >
+        <div class="title">
+          <b>{{ user.username|default('-') }}</b>
+          <small>Digital Donor Card</small>
+        </div>
+      </div>
+
+      <div class="chip">
+        Blood Hero
+        <span class="blood-badge">{{ user.bloodgroup|default('—') }}</span>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="field"><h4>Donor ID</h4><p>#{{ user.id|default('-') }}</p></div>
+      <div class="field"><h4>City</h4><p>{{ user.city|default('-') }}</p></div>
+      <div class="field"><h4>Email</h4><p>{{ user.email|default('-') }}</p></div>
+      <div class="field"><h4>Phone</h4><p>{{ user.phone|default('-') }}</p></div>
+      <div class="field"><h4>Weight</h4><p>{% if user and user.weight %}{{ user.weight }} kg{% else %}-{% endif %}</p></div>
+      <div class="field"><h4>User Ratings</h4><p>{{ user.ratings }}</p></div>
+    </div>
+
+    <div class="footer">
+      {% set rating = (user.ratings|int if (user and user.ratings is defined) else 0) %}
+      <div class="stars" aria-label="Rating {{ rating }} out of 5">
+        {% for i in range(1,6) %}
+          {% if i <= rating %}<span>★</span>{% else %}<span class="muted">☆</span>{% endif %}
+        {% endfor %}
+        <small>({{ rating }}/5)</small>
+      </div>
+
+      <div style="display:flex; gap:8px;">
+        <a href="/Hprofile" class="button-30">Update Info</a>
+        <button class="button-30" onclick="window.print()">Print Card</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

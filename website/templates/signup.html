@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up • Blood Donation Management System</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    :root { --bdms-danger: #dc3545; }
+    body { padding-top: 56px; }
+
+    .auth-wrapper {
+      min-height: calc(100vh - 56px);
+      display: grid; grid-template-columns: 1fr;
+    }
+    @media (min-width: 992px) { .auth-wrapper { grid-template-columns: 1.1fr 0.9fr; } }
+
+    .brand-panel {
+      background: linear-gradient(135deg, #ff6b6b, #dc3545 60%, #b31d2a);
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .brand-panel .overlay-circles {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.2;
+      background-image:
+        radial-gradient(closest-side, #fff, transparent 70%),
+        radial-gradient(closest-side, #fff, transparent 70%),
+        radial-gradient(closest-side, #fff, transparent 70%);
+      background-size: 22rem 22rem, 18rem 18rem, 28rem 28rem;
+      background-position: -6rem -6rem, calc(100% + 3rem) 20%, 40% calc(100% + 8rem);
+      background-repeat: no-repeat;
+    }
+    .brand-panel .content { min-height: 100%; display: flex; align-items: center; justify-content: center; padding: 3rem 2rem; }
+
+    .brand-badge {
+      display: inline-flex; align-items: center; gap: .5rem; font-weight: 600;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .5rem .75rem; border-radius: 999px; font-size: .9rem;
+    }
+
+    .auth-card { display: flex; align-items: center; justify-content: center; padding: 2rem 1.25rem; }
+
+    .card.shadow-soft { border: 1px solid rgba(0,0,0,.06); box-shadow: 0 10px 30px rgba(0,0,0,.08); border-radius: 1rem; }
+
+    .form-control:focus, .form-select:focus { border-color: var(--bdms-danger); box-shadow: 0 0 0 .25rem rgba(220,53,69,.25); }
+
+    .btn-danger { background-color: var(--bdms-danger); }
+    .btn-danger:hover { filter: brightness(.95); }
+
+    .divider { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .75rem; color: #6c757d; font-size: .9rem; margin: 1rem 0; }
+    .divider::before, .divider::after { content: ""; height: 1px; background: #dee2e6; display: block; }
+
+    .navbar-brand small { font-weight: 500; opacity: .85; }
+
+    .strength { height: .5rem; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="homeg">
+        <i class="bi bi-droplet-fill"></i>
+        <span>Blood Donation Management System</span>
+        <small class="d-none d-md-inline">• Sign Up</small>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homeg">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="homeg#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="signup">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3" id="flashArea">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% set cls = 'alert-info' %}
+          {% if category == 'success' %}{% set cls = 'alert-success' %}{% endif %}
+          {% if category == 'error' %}{% set cls = 'alert-danger' %}{% endif %}
+          {% if category == 'warning' %}{% set cls = 'alert-warning' %}{% endif %}
+          <div class="alert {{ cls }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <main class="auth-wrapper">
+    <!-- Left / Brand Panel -->
+    <section class="brand-panel">
+      <div class="overlay-circles"></div>
+      <div class="content">
+        <div class="text-center text-lg-start">
+          <span class="brand-badge mb-3"><i class="bi bi-heart-pulse-fill"></i> Join the Network</span>
+          <h1 class="display-6 fw-semibold mb-3">Create your account as a Blood Hero or Blood Fighter</h1>
+          <p class="lead mb-4">Register to access real-time matching, digital donor cards, and personalized notifications. Every signup strengthens the safety net.</p>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>Smart matching based on blood group & proximity</li>
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>Automated alerts & donation reminders</li>
+            <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>ML-powered demand forecasting</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right / Sign Up Card -->
+    <section class="auth-card">
+      <div class="container" style="max-width: 640px;">
+        <div class="card shadow-soft">
+          <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h2 class="h4 mb-0">Create your account</h2>
+              <a href="login.html" class="text-decoration-none small">Already have an account? Login</a>
+            </div>
+
+            <form class="needs-validation" id="signupForm" novalidate method="POST">
+              <!-- Role selection -->
+              <div class="mb-3">
+                <label class="form-label" for="role">I am signing up as</label>
+                <select id="role" name="role" class="form-select" required>
+                  <option selected disabled value="">Choose role…</option>
+                  <option value="hero">Blood Hero (Donor)</option>
+                  <option value="fighter">Blood Fighter (Requester)</option>
+                  <!-- <option value="admin">Admin</option> -->
+                </select>
+                <div class="invalid-feedback">Please select your role.</div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Full name</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="e.g., Rahim Uddin" required />
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g., 01XXXXXXXXX" pattern="^[0-9\-\+\s]{7,15}$" required />
+                  <div class="invalid-feedback">Enter a valid phone number.</div>
+                </div>
+              </div>
+
+              <div class="row g-3 mt-0">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required />
+                  <div class="invalid-feedback">Enter a valid email.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" id="city" name="city" class="form-control" placeholder="e.g., Dhaka" required />
+                  <div class="invalid-feedback">Please enter your city.</div>
+                </div>
+              </div>
+
+              <!-- Role-specific: Blood Hero fields -->
+              <div id="heroFields" class="mt-3" style="display:none;">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="bloodGroup" class="form-label">Blood group</label>
+                    <select id="bloodGroup" name="bloodGroup" class="form-select">
+                      <option value="">Select…</option>
+                      <option>A+</option><option>A-</option>
+                      <option>B+</option><option>B-</option>
+                      <option>AB+</option><option>AB-</option>
+                      <option>O+</option><option>O-</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastDonation" class="form-label">Last donation date (optional)</label>
+                    <input type="date" id="lastDonation" name="lastDonation" class="form-control" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="weight" class="form-label">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" class="form-control" min="35" max="200" step="0.1" placeholder="e.g., 60" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Role-specific: Blood Fighter fields -->
+              <div id="fighterFields" class="mt-3" style="display:none;">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="reqBloodGroup" class="form-label">Required blood group</label>
+                    <select id="reqBloodGroup" name ="reqBloodGroup"  class="form-select">
+                      <option value="">Select…</option>
+                      <option>A+</option><option>A-</option>
+                      <option>B+</option><option>B-</option>
+                      <option>AB+</option><option>AB-</option>
+                      <option>O+</option><option>O-</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="hospital" class="form-label">Hospital (optional)</label>
+                    <input type="text" id="hospital" name="hospital" class="form-control" placeholder="e.g., Square Hospital" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Passwords -->
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" minlength="8" required />
+                    <button class="btn btn-outline-secondary" type="button" id="togglePwd" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                  </div>
+                  <div class="progress strength mt-2" role="progressbar" aria-label="Password strength" aria-valuemin="0" aria-valuemax="100">
+                    <div id="strengthBar" class="progress-bar" style="width:0%"></div>
+                  </div>
+                  <div class="form-text">Use 8+ chars with upper, lower, number & symbol.</div>
+                  <div class="invalid-feedback">Minimum 8 characters.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="confirm" class="form-label">Confirm password</label>
+                  <div class="input-group">
+                    <input type="password" id="confirm" name="confirm" class="form-control" placeholder="••••••••" minlength="8" required />
+                    <button class="btn btn-outline-secondary" type="button" id="toggleConfirm" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                  </div>
+                  <div class="invalid-feedback" id="confirmFeedback">Passwords must match.</div>
+                </div>
+              </div>
+
+              <!-- Consents -->
+              <div class="mt-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required />
+                  <label class="form-check-label" for="terms">I agree to the <a href="#" class="text-decoration-none">Terms</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>.</label>
+                  <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="checkbox" id="consent" />
+                  <label class="form-check-label" for="consent">I consent to receive alerts about requests and campaigns.</label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-danger w-100 mt-3">Create account</button>
+
+              <div class="divider"><span>or</span></div>
+              <button type="button" class="btn btn-outline-secondary w-100">
+                <i class="bi bi-google me-2"></i> Continue with Google
+              </button>
+            </form>
+
+            <p class="text-center mt-4 mb-0 small">Already have an account? <a href="login" class="text-decoration-none">Log in</a></p>
+          </div>
+        </div>
+        <p class="text-center text-muted small mt-3">© 2025 Blood Donation Management System</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle role-specific sections
+    const roleSelect = document.getElementById('role');
+    const heroFields = document.getElementById('heroFields');
+    const fighterFields = document.getElementById('fighterFields');
+
+    function updateRoleSections() {
+      const role = roleSelect.value;
+      heroFields.style.display = role === 'hero' ? 'block' : 'none';
+      fighterFields.style.display = role === 'fighter' ? 'block' : 'none';
+    }
+    if (roleSelect) roleSelect.addEventListener('change', updateRoleSections);
+
+    // Show/Hide password
+    function bindToggle(buttonId, inputId) {
+      const btn = document.getElementById(buttonId);
+      const input = document.getElementById(inputId);
+      if (!btn || !input) return;
+      btn.addEventListener('click', () => {
+        const isText = input.getAttribute('type') === 'text';
+        input.setAttribute('type', isText ? 'password' : 'text');
+        btn.querySelector('i').classList.toggle('bi-eye');
+        btn.querySelector('i').classList.toggle('bi-eye-slash');
+      });
+    }
+    bindToggle('togglePwd', 'password');
+    bindToggle('toggleConfirm', 'confirm');
+
+    // Password strength meter
+    const pwd = document.getElementById('password');
+    const strengthBar = document.getElementById('strengthBar');
+    function getStrength(p) {
+      let score = 0;
+      if (p.length >= 8) score++;
+      if (/[a-z]/.test(p) && /[A-Z]/.test(p)) score++;
+      if (/[0-9]/.test(p)) score++;
+      if (/[^A-Za-z0-9]/.test(p)) score++;
+      return score; // 0..4
+    }
+    function updateStrength() {
+      const s = getStrength(pwd.value);
+      const percent = s * 25; // 0..100
+      strengthBar.style.width = percent + '%';
+      strengthBar.classList.remove('bg-danger', 'bg-warning', 'bg-success');
+      if (s <= 1) strengthBar.classList.add('bg-danger');
+      else if (s <= 3) strengthBar.classList.add('bg-warning');
+      else strengthBar.classList.add('bg-success');
+    }
+    if (pwd) pwd.addEventListener('input', updateStrength);
+
+    // Confirm password validation
+    const confirm = document.getElementById('confirm');
+    const confirmFeedback = document.getElementById('confirmFeedback');
+    function validateMatch() {
+      if (confirm.value !== pwd.value) {
+        confirm.setCustomValidity('Mismatch');
+        confirmFeedback.textContent = 'Passwords must match.';
+      } else {
+        confirm.setCustomValidity('');
+        confirmFeedback.textContent = 'Looks good!';
+      }
+    }
+    if (pwd) pwd.addEventListener('input', validateMatch);
+    if (confirm) confirm.addEventListener('input', validateMatch);
+
+    // Bootstrap validation + payload example
+    // (() => {
+    //   const form = document.getElementById('signupForm');
+    //   form.addEventListener('submit', event => {
+    //     updateRoleSections();
+    //     validateMatch();
+    //     if (!form.checkValidity()) {
+    //       event.preventDefault();
+    //       event.stopPropagation();
+    //     } else {
+    //       event.preventDefault(); // Remove when wiring to backend
+    //       const payload = {
+    //         role: roleSelect.value,
+    //         name: document.getElementById('name').value,
+    //         phone: document.getElementById('phone').value,
+    //         email: document.getElementById('email').value,
+    //         city: document.getElementById('city').value,
+    //         hero: roleSelect.value === 'hero' ? {
+    //           bloodGroup: document.getElementById('bloodGroup').value || null,
+    //           lastDonation: document.getElementById('lastDonation').value || null,
+    //           weight: document.getElementById('weight').value || null,
+    //         } : null,
+    //         fighter: roleSelect.value === 'fighter' ? {
+    //           reqBloodGroup: document.getElementById('reqBloodGroup').value || null,
+    //           hospital: document.getElementById('hospital').value || null,
+    //         } : null,
+    //         consent: document.getElementById('consent').checked,
+    //         terms: document.getElementById('terms').checked,
+    //       };
+    //       console.log('Signup submit →', payload);
+    //       alert('Signup complete for ' + payload.name + '\nRole: ' + payload.role + '\n');
+    //     }
+    //     form.classList.add('was-validated');
+    //   }, false);
+    // })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{% extends 'BloodFighterBase.html' %}
+
+{% block title %}
+Available Donor • Blood Donation
+{% endblock %}
+
+{% block Donor %}
+
+        <li>
+          <a href="Donor" title="Available Donor" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
+            <i class="fas fa-tasks"></i>
+            <span class="nav-item">Available Donor</span>
+          </a>
+        </li>
+
+{% endblock %}
+
+
+      {% block flash %}
+
+      {% endblock %}
+
+
+{% block section %}
+
+<div class="course-box">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Header / Actions -->
+      <div class="info">
+        <h3>Search for a Donor</h3>
+
+        <div class="info_data">
+          <!-- Landlord Name -->
+          <div class="data">
+            <h4>User Name</h4>
+            <strong>
+              {% if user and user.username %}
+                {{ user.username }}
+              {% else %}
+                -
+              {% endif %}
+            </strong>
+          </div>
+
+          <!-- Add Property Button -->
+          <div class="data">
+            <h4>Request an Emergency situtaion</h4>
+                <form method="POST" style="margin:0;">
+                    <input type="hidden" name="useremail" id = "useremail" value="{{ user.email }}">
+                    <button type="submit" class="button-30" 
+                            style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
+                    <strong>Emergency</strong>
+                    </button>
+                </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property List (Table) -->
+      <div class="table-box table--four" style="margin-top: 12px;">
+        <div class="table-scroll">
+          <!-- Head -->
+          <div class="table-row table-head">
+            <div class="table-cell first-cell"><p style="text-align: center;">Donor Name</p></div>
+            <div class="table-cell"><p>Blood Group</p></div>
+            <div class="table-cell"><p>Residential City</p></div>
+            <div class="table-cell last-cell"><p>Donor Contact Number</p></div>
+            <div class="table-cell last-cell"><p>Request Blood Donation</p></div>
+          </div>
+
+          <!-- Rows -->
+          {% if blood %}
+            {% for data in blood %}
+              <div class="table-row">
+                <div class="table-cell first-cell"><p style="text-align: center;"><b>{{ data.username }}</b></p></div>
+                <div class="table-cell"><p><b>{{ data.bloodgroup }}</b></p></div>
+                <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
+                <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
+                <div class="table-cell last-cell">
+                  {% for xyz in req %}
+                    {% if xyz.donor_email == data.email %}
+                          <!-- <input type="hidden" name="userid" id = "userid" value="{{ data.email }}"> -->
+                          <button type="submit" class="button-30" 
+                                  style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;" disabled>
+                          <strong>Requested</strong>
+                          </button>
+                    {% else %}
+                      <form method="POST" style="margin:0;">
+                          <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
+                          <button type="submit" class="button-30" 
+                                  style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
+                          <strong>Request</strong>
+                          </button>
+                      </form>
+                    {% endif %}
+                  {% endfor %}
+
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="table-row">
+              <div class="table-cell first-cell" style="grid-column: 1 / -1; text-align:center;">
+                <p>No available Donor found yet.</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
