@@ -6,33 +6,17 @@ Dashboard • Blood Donation
 
 {% block Dashboard %}
 
+
         <li>
-          <a href="" title="Dashboard" style="box-shadow: 0 4px 8px rgba(112, 130, 180, 0.2); background-color: #87baed;">
-            <i class="fas fa-home"></i>
-            <span class="nav-item">Dashboard</span>
+          <a href="" title="Digital Donor Card">
+            <i class="fas fa-wallet"></i>
+            <span class="nav-item">Digital Donor Card</span>
           </a>
         </li>
 
 {% endblock %}
 
 
-      {% block flash %}
-  <div class="container mt-3" id="flashArea">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          {% set cls = 'alert-info' %}
-          {% if category == 'success' %}{% set cls = 'alert-success' %}{% endif %}
-          {% if category == 'error' %}{% set cls = 'alert-danger' %}{% endif %}
-          {% if category == 'warning' %}{% set cls = 'alert-warning' %}{% endif %}
-          <div class="alert {{ cls }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-      {% endblock %}
 
 
 {% block section %}
