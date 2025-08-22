@@ -23,33 +23,54 @@ Donation Request • Blood Donation
 
 {% block section %}
 
-      <section class="main-skills">
-        <div class="card">
-          <i class="fas fa-laptop-code"></i>
-          <h3>Active Requests</h3>
-          <p>Track requests needing immediate attention.</p>
-          <button>Open</button>
-        </div>
-        <div class="card">
-          <i class="fab fa-wordpress"></i>
-          <h3>Donor Matches</h3>
-          <p>New matches found in your area.</p>
-          <button>Open</button>
-        </div>
-        </section>
-        <section class="main-skills">
-        <div class="card">
-          <i class="fas fa-palette"></i>
-          <h3>Inventory</h3>
-          <p>Monitor stock and expiry alerts.</p>
-          <button>Open</button>
-        </div>
-        <div class="card">
-          <i class="fab fa-app-store-ios"></i>
-          <h3>Campaigns</h3>
-          <p>Upcoming drives & events.</p>
-          <button>Open</button>
-        </div>
-      </section>
+<div class="course-box">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Notifications -->
+      <div class="info notif">
+        <h3>Notifications</h3>
+
+        {% if data %}
+          {% for row in data %}
+          <div class="info_data">
+            <div class="data">
+              <h4>Full Name</h4>
+              <p>
+                {{ row.requester_name }} has requested a blood donation appointment
+                at the {{ row.hospital }} hospital in {{ row.city }}, on {{ row.created_at }}.
+                Current status of the request is {{ row.status }}.
+              </p>
+
+              <!-- Corner actions -->
+              <div class="notif-actions">
+                <!-- Use POST if your route requires it + add CSRF as needed -->
+                <form action="/requests/{{ row.id }}/accept" method="post">
+                  {# {% csrf_token %} for Django or {{ form.csrf_token }} for Flask-WTF #}
+                  <button type="submit" class="button-30 is-success">Accept</button>
+                </form>
+                <form action="/requests/{{ row.id }}/reject" method="post">
+                  {# {% csrf_token %} #}
+                  <button type="submit" class="button-30 is-danger">Reject</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="info_data">
+            <div class="data">
+              <p>No notifications right now.</p>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+      <!-- /Notifications -->
+
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
