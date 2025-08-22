@@ -64,9 +64,8 @@ class Emergency(db.Model):
     hospital = db.Column(db.String(40), nullable=False)   
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-class Ratings(db.Model):
+class RatingsDB(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    ratings_increased = db.Column(db.Float, nullable=False, default=0.0)
     donor_email = db.Column(db.String(120), nullable=False)
     requester_email = db.Column(db.String(120), nullable=False)
     ratingstatus = db.Column(db.String(20), default="unrated")
