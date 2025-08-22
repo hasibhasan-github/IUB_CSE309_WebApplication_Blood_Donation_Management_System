@@ -149,4 +149,5 @@ def DonationR():
 @views.route('/Dcard')
 @login_required
 def Dcard():
-    return render_template("DonorCard.html", user = current_user)
+    heroUser = Hero.query.filter_by(email = current_user.email).first()
+    return render_template("DonorCard.html", user = heroUser)
