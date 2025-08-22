@@ -79,13 +79,26 @@ Available Donor • Blood Donation
                 <div class="table-cell"><p><b>{{ data.city }}</b></p></div>
                 <div class="table-cell last-cell"><p><b>{{ data.phone }}</b></p></div>
                 <div class="table-cell last-cell">
-                <form method="POST" style="margin:0;">
-                    <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
-                    <button type="submit" class="button-30" 
-                            style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
-                    <strong>Request</strong>
-                    </button>
-                </form>
+                  {% for xyz in req %}
+                    {% if xyz.donor_email == data.email %}
+                      <form method="POST" style="margin:0;">
+                          <!-- <input type="hidden" name="userid" id = "userid" value="{{ data.email }}"> -->
+                          <button type="submit" class="button-30" 
+                                  style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;" disabled>
+                          <strong>Requested</strong>
+                          </button>
+                      </form>
+                    {% else %}
+                      <form method="POST" style="margin:0;">
+                          <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
+                          <button type="submit" class="button-30" 
+                                  style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;">
+                          <strong>Request</strong>
+                          </button>
+                      </form>
+                    {% endif %}
+                  {% endfor %}
+
                 </div>
               </div>
             {% endfor %}
