@@ -20,6 +20,7 @@ def homeg():
 @views.route('/Fdashboard')
 @login_required
 def Fdashboard():
+    total_fighter_users = Fighter.query.count()
     return render_template("BloodFighterDashboard.html", user = current_user)
 
 
