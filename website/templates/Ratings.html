@@ -54,15 +54,16 @@ Rate Donor • Blood Donation
                             <button type="submit" class="button-30 is-success" disabled>Rated</button>
                         {% else %}
                         {% endif %}
-                    <div class="notif-actions">
-                      <!-- Use GET to navigate to rating page with donor_id -->
-                      <form method="POST">
-                        <input type="hidden" name="donor_email" id="donor_email" value="{{ d.donor_email }}">
-                        <button type="submit" class="button-30 is-success">Rate</button>
-                      </form>
-                    </div>
+                      {% else %}
+                        <div class="notif-actions">
+                          <!-- Use GET to navigate to rating page with donor_id -->
+                          <form method="POST">
+                            <input type="hidden" name="donor_email" id="donor_email" value="{{ d.donor_email }}">
+                            <button type="submit" class="button-30 is-success">Rate</button>
+                          </form>
+                        </div>
+                      {% endif %}
                     {% endfor %}
-                {% endif %}
               </div>
             </div>
           {% endfor %}
