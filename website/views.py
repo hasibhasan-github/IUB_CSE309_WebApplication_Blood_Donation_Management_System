@@ -102,7 +102,7 @@ def Hnotify():
     return render_template("HeroNotification.html", user = current_user, data = bReqD, notify = emer)
 
 
-@views.route('/DonationR')
+@views.route('/DonationR',  methods = ['GET', 'POST'])
 @login_required
 def DonationR():
     bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
