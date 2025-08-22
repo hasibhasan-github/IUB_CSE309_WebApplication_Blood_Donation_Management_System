@@ -65,6 +65,7 @@ class Emergency(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class RatingsDB(db.Model):
+    __tablename__ = "ratings_db"
     id = db.Column(db.Integer, primary_key=True)
     donor_email = db.Column(db.String(120), nullable=False)
     requester_email = db.Column(db.String(120), nullable=False)

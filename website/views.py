@@ -84,8 +84,10 @@ def Ratings():
     bRD = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
     heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
     donorem = request.form.get("donor_email")
-    rated = RatingsDB.query.filter_by(requester_email = current_user.email).first()
+    rated = RatingsDB.query.filter_by(requester_email = current_user.email).all()
     # print(rated.donor_email)
+    for a in rated:
+        print(rated.donor_email)
     for hero in heroUser:
         if donorem == hero.email :
             hero.ratings = f"{float(hero.ratings) + 0.05:.2f}"
