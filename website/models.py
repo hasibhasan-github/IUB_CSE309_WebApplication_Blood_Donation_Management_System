@@ -37,7 +37,7 @@ class Hero(db.Model, UserMixin):
     userRole = db.Column(db.String(20),  nullable=False)
     city = db.Column(db.String(10),  nullable=False)
     bloodgroup = db.Column(db.String(3),  nullable=False)
-    ratings = db.Column(db.String(1), nullable=False, default="4")
+    ratings = db.Column(db.String(3), nullable=False, default="4")
 
 from datetime import datetime
 

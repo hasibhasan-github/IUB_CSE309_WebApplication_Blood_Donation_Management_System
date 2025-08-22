@@ -79,7 +79,15 @@ def ActiveReq():
 @views.route('/Ratings', methods = ['GET', 'POST'])
 @login_required
 def Ratings():
-    return render_template("Ratings.html", user = current_user)
+    bRD = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
+    heroUser = Hero.query.filter_by(bloodgroup = current_user.bloodgroup).all()
+    donorem = request.form.get("donor_email")
+    for hero in heroUser:
+        if donorem == hero.email :
+            hero.ratings = f"{float(hero.ratings) + 0.1:.2f}"
+            db.session.commit()
+            break
+    return render_template("Ratings.html", user = current_user, bRD = bRD)
 
 
 # Profile Templates Route Hero
@@ -116,12 +124,14 @@ def DonationR():
             if donor.donor_email == current_user.email :
                 donor.status = "Accepted"
                 db.session.commit()
+            break
     elif requester2 is not None :
         status2 = BloodRequestDonate.query.filter_by(requester_email = requester2).all()
         for donor in status2:
             if donor.donor_email == current_user.email :
                 donor.status = "Rejected"
                 db.session.commit()
+            break
     else:
         pass
     return render_template("DonationRequest.html", user = current_user, data = bReqD, notify = emer)

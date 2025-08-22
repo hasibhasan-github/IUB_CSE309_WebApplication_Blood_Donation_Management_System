@@ -33,21 +33,21 @@ Rate Donor • Blood Donation
       <div class="info has-actions">
         <h3>Donor List</h3>
 
-        {% if donors %}
-          {% for d in donors %}
+        {% if bRD %}
+          {% for d in bRD %}
             <div class="info_data">
               <div class="data">
                 <h4>Donor</h4>
                 <p>
-                  <strong>{{ d.name }}</strong>
+                  <strong>{{ d.donor_name }}</strong>
                   {% if d.blood_group %} • {{ d.blood_group }}{% endif %}
                 </p>
 
                 <!-- Corner action -->
                 <div class="notif-actions">
                   <!-- Use GET to navigate to rating page with donor_id -->
-                  <form action="/ratings" method="get">
-                    <input type="hidden" name="donor_id" value="{{ d.id }}">
+                  <form method="POST">
+                    <input type="hidden" name="donor_email" id="donor_email" value="{{ d.donor_email }}">
                     <button type="submit" class="button-30 is-success">Rate</button>
                   </form>
                 </div>
