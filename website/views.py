@@ -107,4 +107,7 @@ def Hnotify():
 def DonationR():
     bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
     emer = Emergency.query.filter_by(blood_group = current_user.bloodgroup).all()
+    requester1 = request.form.get("userid")
+    requester2 = request.form.get("userid")
+    status = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
     return render_template("DonationRequest.html", user = current_user, data = bReqD, notify = emer)
