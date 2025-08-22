@@ -143,3 +143,10 @@ def DonationR():
     else:
         pass
     return render_template("DonationRequest.html", user = current_user, data = bReqD, notify = emer)
+
+
+
+@views.route('/Dcard')
+@login_required
+def Dcard():
+    return render_template("DonorCard.html", user = current_user)
