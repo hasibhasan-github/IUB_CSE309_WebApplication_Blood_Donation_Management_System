@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-from .models import Fighter, Hero, BloodRequestDonate, Emergency, RatingsDB
+from .models import Fighter, Hero, BloodRequestDonate, Emergency, RatingsDB, User
 from . import db
 
 views = Blueprint('views', __name__)
@@ -104,6 +104,7 @@ def Ratings():
 @login_required
 def Hdashboard():
     total_hero_users = Hero.query.count()
+    total_users = User.query.count()
     return render_template("HeroDashboard.html", user = current_user)
 
 
