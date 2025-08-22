@@ -56,12 +56,12 @@ Donation Request • Blood Donation
                 </form>
                 {% else %}
                 <form method="POST">
-                    <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
-                  <button type="submit" class="button-30 is-success">Accept</button>
+                    <!-- <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}"> -->
+                  <button type="submit" class="button-30 is-success" disabled>Accept</button>
                 </form>
                 <form method="POST">
-                    <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
-                  <button type="submit" class="button-30 is-danger">Reject</button>
+                    <!-- <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}"> -->
+                  <button type="submit" class="button-30 is-danger" disabled>Reject</button>
                 </form>
                 {% endif %}
               </div>
