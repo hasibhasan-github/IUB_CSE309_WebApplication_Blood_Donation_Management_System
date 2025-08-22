@@ -45,6 +45,7 @@ Donation Request • Blood Donation
               <!-- Corner actions -->
               <div class="notif-actions">
                 <!-- Use POST if your route requires it + add CSRF as needed -->
+                 {% if row.status == 'pending' %}
                 <form method="POST">
                     <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
                   <button type="submit" class="button-30 is-success">Accept</button>
@@ -53,6 +54,16 @@ Donation Request • Blood Donation
                     <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
                   <button type="submit" class="button-30 is-danger">Reject</button>
                 </form>
+                {% else %}
+                <form method="POST">
+                    <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-success">Accept</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
+                  <button type="submit" class="button-30 is-danger">Reject</button>
+                </form>
+                {% endif %}
               </div>
             </div>
           </div>
