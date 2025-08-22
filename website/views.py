@@ -95,7 +95,7 @@ def Ratings():
             db.session.add(newRecord)
             db.session.commit()
             break
-    return render_template("Ratings.html", user = current_user, bRD = bRD)
+    return render_template("Ratings.html", user = current_user, bRD = bRD, rate = rated)
 
 
 # Profile Templates Route Hero
