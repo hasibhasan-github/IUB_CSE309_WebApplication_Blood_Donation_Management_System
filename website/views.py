@@ -103,6 +103,7 @@ def Ratings():
 @views.route('/Hdashboard')
 @login_required
 def Hdashboard():
+    total_users = Hero.query.count()
     return render_template("HeroDashboard.html", user = current_user)
 
 
