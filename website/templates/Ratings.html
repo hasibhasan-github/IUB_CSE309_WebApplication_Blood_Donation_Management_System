@@ -26,52 +26,49 @@ Rate Donor • Blood Donation
 
 
 <div class="course-box">
-  <div class="main-skills">
-    
-    <!-- Donor List card -->
-    <div class="card">
-      <h3>Donor List</h3>
-      <ul style="list-style:none; padding-left:0; margin:8px 0 0;">
+  <div class="wrapper">
+    <div class="right">
+
+      <!-- Donor List -->
+      <div class="info has-actions">
+        <h3>Donor List</h3>
+
         {% if donors %}
           {% for d in donors %}
-            <li style="padding:6px 0; border-bottom:1px solid #eef0f3;">
-              <strong>{{ d.name }}</strong>
-              {% if d.blood_group %}<small style="color:var(--muted);"> • {{ d.blood_group }}</small>{% endif %}
-            </li>
+            <div class="info_data">
+              <div class="data">
+                <h4>Donor</h4>
+                <p>
+                  <strong>{{ d.name }}</strong>
+                  {% if d.blood_group %} • {{ d.blood_group }}{% endif %}
+                </p>
+
+                <!-- Corner action -->
+                <div class="notif-actions">
+                  <!-- Use GET to navigate to rating page with donor_id -->
+                  <form action="/ratings" method="get">
+                    <input type="hidden" name="donor_id" value="{{ d.id }}">
+                    <button type="submit" class="button-30 is-success">Rate</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           {% endfor %}
         {% else %}
-          <li>No donors yet.</li>
+          <div class="info_data">
+            <div class="data">
+              <p>No donors yet.</p>
+            </div>
+          </div>
         {% endif %}
-      </ul>
+      </div>
+      <!-- /Donor List -->
+
     </div>
-
-    <!-- Rate action card -->
-<div class="card">
-  <h3>Rate a Donor</h3>
-  <p style="margin:8px 0 12px; color:var(--muted);">Select a donor and continue to the rating page.</p>
-
-  <form action="/ratings" method="get" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-    <select name="donor_id" required aria-label="Choose donor to rate"
-            style="padding:8px 10px; border:1px solid #e5e7eb; border-radius:8px; min-width:220px;">
-      <option value="" disabled selected>Select a donor…</option>
-      {% for d in donors %}
-        <option value="{{ d.id }}">
-          {{ d.name }}{% if d.blood_group %} — {{ d.blood_group }}{% endif %}
-        </option>
-      {% endfor %}
-    </select>
-
-    <button type="submit" class="button-30">Rate</button>
-  </form>
-
-  {% if not donors %}
-    <small style="color:var(--muted); display:block; margin-top:6px;">No donors available right now.</small>
-  {% endif %}
-</div>
-
-
   </div>
 </div>
+
+
 
 
 

@@ -76,7 +76,7 @@ def ActiveReq():
 
 
 
-@views.route('/Ratings')
+@views.route('/Ratings', methods = ['GET', 'POST'])
 @login_required
 def Ratings():
     return render_template("Ratings.html", user = current_user)
