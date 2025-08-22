@@ -100,3 +100,11 @@ def Hnotify():
     bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
     emer = Emergency.query.filter_by(blood_group = current_user.bloodgroup).all()
     return render_template("HeroNotification.html", user = current_user, data = bReqD, notify = emer)
+
+
+@views.route('/DonationR')
+@login_required
+def DonationR():
+    bReqD = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
+    emer = Emergency.query.filter_by(blood_group = current_user.bloodgroup).all()
+    return render_template("DonationRequest.html", user = current_user, data = bReqD, notify = emer)
