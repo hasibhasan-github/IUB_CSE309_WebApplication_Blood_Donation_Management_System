@@ -16,7 +16,7 @@ Dashboard • Blood Donation
 {% endblock %}
 
 
-      {% block flash %}
+{% block flash %}
   <div class="container mt-3" id="flashArea">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
@@ -32,7 +32,8 @@ Dashboard • Blood Donation
         {% endfor %}
       {% endif %}
     {% endwith %}
-      {% endblock %}
+  </div>
+{% endblock %}
 
 
 {% block section %}
