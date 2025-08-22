@@ -130,20 +130,20 @@ def DonationR():
     emer = Emergency.query.filter_by(blood_group = current_user.bloodgroup).all()
     requester1 = request.form.get("Accept")
     requester2 = request.form.get("Reject")
+    print(requester1)
+    print(requester2)
     if requester1 is not None:
         status1 = BloodRequestDonate.query.filter_by(requester_email = requester1).all()
         for donor in status1:
             if donor.donor_email == current_user.email :
                 donor.status = "Accepted"
                 db.session.commit()
-            break
     elif requester2 is not None :
         status2 = BloodRequestDonate.query.filter_by(requester_email = requester2).all()
         for donor in status2:
             if donor.donor_email == current_user.email :
                 donor.status = "Rejected"
                 db.session.commit()
-            break
     else:
         pass
     return render_template("DonationRequest.html", user = current_user, data = bReqD, notify = emer)
