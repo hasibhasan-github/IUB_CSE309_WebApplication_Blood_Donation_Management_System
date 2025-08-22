@@ -81,13 +81,11 @@ Available Donor • Blood Donation
                 <div class="table-cell last-cell">
                   {% for xyz in req %}
                     {% if xyz.donor_email == data.email %}
-                      <form method="POST" style="margin:0;">
                           <!-- <input type="hidden" name="userid" id = "userid" value="{{ data.email }}"> -->
                           <button type="submit" class="button-30" 
                                   style="display:inline-flex; align-items:center; border:none; background:none; cursor:pointer;" disabled>
                           <strong>Requested</strong>
                           </button>
-                      </form>
                     {% else %}
                       <form method="POST" style="margin:0;">
                           <input type="hidden" name="userid" id = "userid" value="{{ data.email }}">
