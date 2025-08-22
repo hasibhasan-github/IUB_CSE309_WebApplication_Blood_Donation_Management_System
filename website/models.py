@@ -37,7 +37,7 @@ class Hero(db.Model, UserMixin):
     userRole = db.Column(db.String(20),  nullable=False)
     city = db.Column(db.String(10),  nullable=False)
     bloodgroup = db.Column(db.String(3),  nullable=False)
-    ratings = db.Column(db.String(3), nullable=False, default="4")
+    ratings = db.Column(db.String(5), nullable=False, default="4")
 
 from datetime import datetime
 
@@ -63,3 +63,10 @@ class Emergency(db.Model):
     city = db.Column(db.String(20), nullable=False)
     hospital = db.Column(db.String(40), nullable=False)   
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Ratings(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    ratings_increased = db.Column(db.Float, nullable=False, default=0.0)
+    donor_email = db.Column(db.String(120), nullable=False)
+    requester_email = db.Column(db.String(120), nullable=False)
+    request_created_at = db.Column(db.String(50), default=lambda: datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"))

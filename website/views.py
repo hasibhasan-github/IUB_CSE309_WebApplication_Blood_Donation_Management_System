@@ -84,7 +84,7 @@ def Ratings():
     donorem = request.form.get("donor_email")
     for hero in heroUser:
         if donorem == hero.email :
-            hero.ratings = f"{float(hero.ratings) + 0.1:.2f}"
+            hero.ratings = f"{float(hero.ratings) + 0.05:.2f}"
             db.session.commit()
             break
     return render_template("Ratings.html", user = current_user, bRD = bRD)
