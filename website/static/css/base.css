@@ -488,3 +488,15 @@ text-align: center;
 padding: 12px;
 }
 }
+
+
+/* Buttons in the top-right corner of each notification card */
+.info.notif .info_data .data{ position: relative; padding-right: 180px; }
+.info.notif .notif-actions{
+  position: absolute; top: 12px; right: 12px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+
+/* Color variants for your existing .button-30 */
+.button-30.is-success{ background: #16a34a; color: #fff; }
+.button-30.is-danger{  background: #ef4444; color: #fff; }
