@@ -22,7 +22,7 @@ def homeg():
 def Fdashboard():
     total_fighter_users = Fighter.query.count()
     total_users = User.query.count()
-    return render_template("BloodFighterDashboard.html", user = current_user, total_users = total_users)
+    return render_template("BloodFighterDashboard.html", user = current_user, total_users = total_users, total_fighter_users = total_fighter_users)
 
 
 @views.route('/Fprofile', methods = ['GET', 'POST'])
