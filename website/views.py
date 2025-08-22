@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 from flask_login import  login_required, current_user
 
-from .models import Fighter, Hero, BloodRequestDonate, Emergency
+from .models import Fighter, Hero, BloodRequestDonate, Emergency, Ratings
 from . import db
 
 views = Blueprint('views', __name__)
@@ -85,6 +85,14 @@ def Ratings():
     for hero in heroUser:
         if donorem == hero.email :
             hero.ratings = f"{float(hero.ratings) + 0.05:.2f}"
+            db.session.commit()
+            newRecord = Ratings(
+                ratings_increased =   float(hero.ratings) + float(0.05),
+                donor_email = donorem,
+                requester_email = current_user.email,
+                ratingstatus = "rated"
+            )
+            db.session.add(newRecord)
             db.session.commit()
             break
     return render_template("Ratings.html", user = current_user, bRD = bRD)
