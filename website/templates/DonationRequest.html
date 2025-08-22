@@ -46,11 +46,11 @@ Donation Request • Blood Donation
               <div class="notif-actions">
                 <!-- Use POST if your route requires it + add CSRF as needed -->
                 <form method="POST">
-                    <input type="hidden" name="Accept" id = "Accept" value="{{ data.requester_email }}">
+                    <input type="hidden" name="Accept" id = "Accept" value="{{ row.requester_email }}">
                   <button type="submit" class="button-30 is-success">Accept</button>
                 </form>
                 <form method="POST">
-                    <input type="hidden" name="Reject" id = "Reject" value="{{ data.requester_email }}">
+                    <input type="hidden" name="Reject" id = "Reject" value="{{ row.requester_email }}">
                   <button type="submit" class="button-30 is-danger">Reject</button>
                 </form>
               </div>
