@@ -17,7 +17,7 @@ def homeg():
 
 # Profile Templates Route Fighter
 
-@views.route('/Fdashboard')
+@views.route('/Fdashboard', methods = ['GET', 'POST'])
 @login_required
 def Fdashboard():
     total_fighter_users = Fighter.query.count()
@@ -105,12 +105,17 @@ def Ratings():
 
 # Profile Templates Route Hero
 
-@views.route('/Hdashboard')
+@views.route('/Hdashboard', methods = ['GET', 'POST'])
 @login_required
 def Hdashboard():
     total_hero_users = Hero.query.count()
     total_users = User.query.count()
-    return render_template("HeroDashboard.html", user = current_user, total_users = total_users, total_hero_users = total_hero_users)
+    dtotalonate = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
+    count = 0
+    for data in dtotalonate:
+        if data.status == "Accepted":
+            count += 1
+    return render_template("HeroDashboard.html", user = current_user, total_users = total_users, total_hero_users = total_hero_users, donate = count)
 
 
 @views.route('/Hprofile')
