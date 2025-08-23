@@ -110,7 +110,7 @@ def Ratings():
 def Hdashboard():
     total_hero_users = Hero.query.count()
     total_users = User.query.count()
-    dtotalonate = BloodRequestDonate.query.filter_by(requester_email = current_user.email).all()
+    dtotalonate = BloodRequestDonate.query.filter_by(donor_email = current_user.email).all()
     count = 0
     for data in dtotalonate:
         if data.status == "Accepted":
